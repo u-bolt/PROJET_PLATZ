@@ -39,26 +39,26 @@
       var img19 = new Image();
       var img20 = new Image();
 
-      img1.src = "img/psd-4.jpg";
-      img2.src = "img/font-1.jpg";
-      img3.src = "img/psd-1.jpg";
-      img4.src = "img/psd-2.jpg";
-      img5.src = "img/ai-1.jpg";
-      img6.src = "img/theme-2.jpg";
-      img7.src = "img/psd-3.jpg";
-      img8.src = "img/font-2.jpg";
-      img9.src = "img/font-3.jpg";
-      img10.src = "img/ai-2.jpg";
-      img11.src = "img/icons-1.jpg";
-      img12.src = "img/ui-1.jpg";
-      img13.src = "img/font-5.jpg";
-      img14.src = "img/theme-2.jpg";
-      img15.src = "img/psd-5.jpg";
-      img16.src = "img/icons-3.jpg";
-      img17.src = "img/font-4.jpg";
-      img18.src = "img/theme-3.jpg";
-      img19.src = "img/font-6.jpg";
-      img20.src = "img/theme-4.jpg";
+      img1.src = "assets/img/psd-4.jpg";
+      img2.src = "assets/img/font-1.jpg";
+      img3.src = "assets/img/psd-1.jpg";
+      img4.src = "assets/img/psd-2.jpg";
+      img5.src = "assets/img/ai-1.jpg";
+      img6.src = "assets/img/theme-2.jpg";
+      img7.src = "assets/img/psd-3.jpg";
+      img8.src = "assets/img/font-2.jpg";
+      img9.src = "assets/img/font-3.jpg";
+      img10.src = "assets/img/ai-2.jpg";
+      img11.src = "assets/img/icons-1.jpg";
+      img12.src = "assets/img/ui-1.jpg";
+      img13.src = "assets/img/font-5.jpg";
+      img14.src = "assets/img/theme-2.jpg";
+      img15.src = "assets/img/psd-5.jpg";
+      img16.src = "assets/img/icons-3.jpg";
+      img17.src = "assets/img/font-4.jpg";
+      img18.src = "assets/img/theme-3.jpg";
+      img19.src = "assets/img/font-6.jpg";
+      img20.src = "assets/img/theme-4.jpg";
     }
   }
 
