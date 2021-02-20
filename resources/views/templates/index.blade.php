@@ -5,7 +5,9 @@
 	</head>
 	<body>
 		
-		<div id="app"></div>
+		<div id="app">
+			<router-view></router-view>
+		</div>
 
 		@include('templates.partials._scripts')
 	</body>
