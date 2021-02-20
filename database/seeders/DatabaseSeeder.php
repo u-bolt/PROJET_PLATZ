@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $nbUsers      = 3;
         $nbCategories = 5;
         $nbComments   = 10;
-        $nbResources  = 20;
+        $nbResources  = 60;
 
         User::factory($nbUsers)->create();
         Categorie::factory($nbCategories)->create();

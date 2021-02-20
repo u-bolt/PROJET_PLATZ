@@ -41,10 +41,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Getter des resources du user
+     */
     public function resources() {
         return $this->hasMany('App\Models\Resource');
     }
 
+    /**
+     * Getter des commentaires du user
+     */
     public function comments() {
         return $this->hasMany('App\Models\Comment');
     }
