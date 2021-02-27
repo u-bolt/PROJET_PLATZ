@@ -31,10 +31,10 @@
                 <div id="wrapper-oldnew">
                     <div class="oldnew">
                         <div class="wrapper-oldnew-prev">
-                            <div id="oldnew-prev" class="disabled"></div>
+                            <div id="oldnew-prev" @click="previousResources" :class="params.start === 0?'disabled':''"></div>
                         </div>
                         <div class="wrapper-oldnew-next">
-                            <div id="oldnew-next"></div>
+                            <div id="oldnew-next" @click="nextResources" :class="params.end === $store.state.resources.length?'disabled':''"></div>
                         </div>
                     </div>
                 </div>
@@ -65,6 +65,7 @@ export default {
     data() {
         return {
             params: {
+                show: 20,
                 start: 0,
                 end: 20
             }
@@ -79,6 +80,30 @@ export default {
             return function(resource) {
                 // Return les ressources correspondants à la resource demandée
                 return this.$store.getters.getCategoriesByResourcesId(resource)
+            }
+        }
+    },
+    methods: {
+        nextResources() {
+            if(this.params.end >= this.$store.state.resources.length){
+                this.params.start
+                this.params.end
+            }
+            else{
+                this.params.start += this.params.show
+                this.params.end += this.params.show
+                window.scroll(0,0)
+            }
+        },
+        previousResources() {
+            if(this.params.start === 0) {
+                this.params.start = 0
+                this.params.end = this.params.show
+            }
+            else{
+                this.params.start -= this.params.show
+                this.params.end -= this.params.show
+                window.scroll(0,0)
             }
         }
     },
@@ -98,3 +123,10 @@ export default {
     }
 }
 </script>
+
+<style>
+ .disabled {
+     pointer-events: none;
+     opacity: 0.5;
+ }
+</style>
