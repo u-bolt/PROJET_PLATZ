@@ -8,6 +8,16 @@ const actions = {
         // Transaction AJAX des catégories
         axios.get('api/categories')
              .then(response => commit('SET_CATEGORIES', response.data))
+    },
+    setComments({commit}) {
+        // Transaction AJAX des comments
+        axios.get('api/comments')
+             .then(response => commit('SET_COMMENTS', response.data))
+    },
+    setUsers({commit}) {
+        // Transaction AJAX des users
+        axios.get('api/users')
+             .then(response => commit('SET_USERS', response.data))
     }
 }
 

@@ -12,13 +12,19 @@
 
                 <section v-for="resource in resources" :key="resource.id" class="work">
                     <figure class="white">
-                        <a href="#">
+                        
+                            <router-link :to="`/details/${resource.id}`">
+                            
+    
+
+
                             <img :src="`assets/img/${resource.image}`" :alt="resource.name" />
                             <dl>
                                 <dt>{{ resource.name | capitalize }}</dt>
                                 <dd>{{ resource.description | truncate(0, 150) }}</dd>
                             </dl>
-                        </a>
+                            </router-link>
+                        
                         <div id="wrapper-part-info">
                             <div class="part-info-image"><img
                                     :src="`assets/img/${categories(resource).icon}`" :alt="categories(resource).name" width="28"
@@ -98,3 +104,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+</style>
