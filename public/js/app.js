@@ -2015,8 +2015,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Header"
 });
@@ -2082,7 +2080,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FilterMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FilterMenu */ "./resources/js/components/FilterMenu.vue");
 /* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Nav */ "./resources/js/components/Nav.vue");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./resources/js/components/Footer.vue");
-//
 //
 //
 //
@@ -38425,48 +38422,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("a", { attrs: { name: "ancre" } }),
+    _vm._v(" "),
+    _c("div", { staticClass: "cache" }),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "wrapper-header" } }, [
+      _c(
+        "div",
+        { staticClass: "object", attrs: { id: "main-header" } },
+        [
+          _c(
+            "router-link",
+            { staticClass: "logo", attrs: { to: "/", exact: "" } },
+            [
+              _c("img", {
+                attrs: {
+                  src: "assets/img/logo-burst.png",
+                  alt: "logo platz",
+                  height: "38",
+                  width: "90"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "stripes" } })
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("a", { attrs: { name: "ancre" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "cache" }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "wrapper-header" } }, [
-        _c("div", { staticClass: "object", attrs: { id: "main-header" } }, [
-          _c("div", { staticClass: "logo" }, [
-            _c("img", {
-              attrs: {
-                src: "assets/img/logo-burst.png",
-                alt: "logo platz",
-                height: "38",
-                width: "90"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "main_tip_search" } }, [
-            _c("form", [
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "search",
-                  id: "tip_search_input",
-                  list: "search",
-                  autocomplete: "off",
-                  required: ""
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "stripes" } })
-        ])
+    return _c("div", { attrs: { id: "main_tip_search" } }, [
+      _c("form", [
+        _c("input", {
+          attrs: {
+            type: "text",
+            name: "search",
+            id: "tip_search_input",
+            list: "search",
+            autocomplete: "off",
+            required: ""
+          }
+        })
       ])
     ])
   }
@@ -38608,7 +38614,7 @@ var render = function() {
       _vm._v(" "),
       _c("Nav"),
       _vm._v(" "),
-      _c("FilterMenu"),
+      _c("FiltersMenu"),
       _vm._v(" "),
       _c(
         "div",
