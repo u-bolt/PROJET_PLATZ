@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Resources;
 use App\Http\Controllers\Categories;
+use App\Http\Controllers\Comments;
+use App\Http\Controllers\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // API DES CATEGORIES
 // CTRL: Categories
     Route::resource('categories', Categories::class)->except(['show', 'create', 'edit']);
+
+// API DES COMMENTS
+// CTRL: Comments
+    Route::resource('comments', Comments::class)->except(['show', 'create', 'edit']);
+
+// API DES USERS
+// CTRL: Users
+    Route::resource('users', Users::class)->except(['show', 'create', 'edit']);

@@ -1,6 +1,8 @@
 const state = {
     resources: [],
-    categories: []
+    categories: [],
+    comments: [],
+    users: []
 }
 
 export default state
