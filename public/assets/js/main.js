@@ -1,6 +1,6 @@
 	
 $(document).ready(function() {
-		$.localScroll();
+		// $.localScroll();
 		$(".cache").delay(1000).fadeOut(500);
 		$("#wrapper-header").delay(1500).animate({opacity:'1',width:'100%'},500);
 		$("#wrapper-navbar").delay(2000).animate({opacity:'1',height:'60px'},500);
@@ -80,7 +80,7 @@ $(document).on('touchend mouseout', '#stripes', function(event){
 var MENUSIDEOPEN = document.getElementById('stripes');
 
 MENUSIDEOPEN.addEventListener('click', function() {
-			   $("#main-container-menu").stop().animate({left:'0'},300);	
+			   $("#main-container-menu").stop().animate({left:'0'},300); // filterMenu
 }); 
 
 /* BOUTON CROSS */

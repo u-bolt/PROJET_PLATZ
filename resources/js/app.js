@@ -36,5 +36,11 @@ window.Vue = require('vue').default;
 const app = new Vue({
     el: '#app',
     router,
-    store
+    store,
+    created() {
+        this.$store.dispatch('setCategories')
+        this.$store.dispatch('setResources')
+        this.$store.dispatch('setComments')
+        this.$store.dispatch('setUsers')
+    }
 });

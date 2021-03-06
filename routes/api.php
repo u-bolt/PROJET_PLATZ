@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Resources;
 use App\Http\Controllers\Categories;
 use App\Http\Controllers\Newsletters;
+use App\Http\Controllers\Comments;
+use App\Http\Controllers\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // API DES NEWSLETETRS
 // CTRL: Newsletters
     Route::resource('newsletters', Newsletters::class)->only('store');
+// API DES COMMENTS
+// CTRL: Comments
+    Route::resource('comments', Comments::class)->except(['show', 'create', 'edit']);
+
+// API DES USERS
+// CTRL: Users
+    Route::resource('users', Users::class)->except(['show', 'create', 'edit']);
