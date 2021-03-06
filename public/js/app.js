@@ -60900,7 +60900,7 @@ var render = function() {
       _vm._v(" "),
       _c("Nav"),
       _vm._v(" "),
-      _c("FilterMenu"),
+      _c("FiltersMenu"),
       _vm._v(" "),
       _c(
         "div",
