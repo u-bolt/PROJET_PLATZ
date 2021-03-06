@@ -28,6 +28,10 @@ window.Vue = require('vue').default;
 
  import router from './routing/router'
  import store from './store/store'
+ // Plugin vue pour les notifications
+ import Notifications from 'vue-notification'
+
+ Vue.use(Notifications)
 
 const app = new Vue({
     el: '#app',

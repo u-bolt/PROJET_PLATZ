@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Resources;
 use App\Http\Controllers\Categories;
+use App\Http\Controllers\Newsletters;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // API DES CATEGORIES
 // CTRL: Categories
     Route::resource('categories', Categories::class)->except(['show', 'create', 'edit']);
+
+// API DES NEWSLETETRS
+// CTRL: Newsletters
+    Route::resource('newsletters', Newsletters::class)->only('store');
