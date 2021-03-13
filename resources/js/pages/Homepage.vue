@@ -2,7 +2,7 @@
     <div>
         <Header />
         <Nav />
-        <FiltersMenu />
+        <FilterMenu />
 
         <div id="wrapper-container">
 

@@ -14,6 +14,12 @@ const mutations = {
     SET_USERS(state, payload) {
         // Hydratation des users
         state.users = payload
+    },
+    LOGIN_USER(state, payload) {
+        state.connectedUser = {...payload.user}
+    },
+    LOGOUT_USER(state, payload) {
+        state.connectedUser = null
     }
 }
 
