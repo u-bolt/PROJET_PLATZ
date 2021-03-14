@@ -12,6 +12,9 @@
             <template v-else>
                 <button class="connection-button"><router-link to="/login">Login</router-link></button>
             </template>
+            <template v-if="!$store.state.connectedUser">
+                <button class="connection-button"><router-link to="/register">Sign in</router-link></button>
+            </template>
             <div id="main_tip_search">
             <form>
                 <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
@@ -45,7 +48,7 @@
     width:100px;
 	margin-top:13px;
 	height:auto;
-	margin-right:25px;
+	margin-right:15px;
 	display:block;
     font-size: 12px;
     font-weight: 600;

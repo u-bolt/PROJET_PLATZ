@@ -48,6 +48,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // CONNECTION
     Route::post('/login', [AuthController::class, 'login']);
 
+// ENREGISTREMENT
+Route::post('/register', [AuthController::class, 'register']);
+
 
     Route::group(['middleware' => ['auth:sanctum']], function() {
         // DECONNECTION
