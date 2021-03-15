@@ -20,7 +20,7 @@
                 <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
             </form>
             </div>
-            <div id="stripes"></div>
+            
         </div>
         </div>
     </div>
