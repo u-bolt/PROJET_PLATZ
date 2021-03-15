@@ -1,13 +1,10 @@
 <template>
     <div>
         <Header />
-        <Nav />
-        <FiltersMenu />
-
+        <Nav @filter="categorieFilter" />
+        <FilterMenu @filter="categorieFilter" />
         <div id="wrapper-container">
-
             <div class="container object">
-
                 <div id="main-container-image">
 
                     <section v-for="resource in resources" :key="resource.id" class="work">
@@ -15,9 +12,6 @@
                             
                                 <router-link :to="`/details/${resource.id}`">
                                 
-        
-
-
                                 <img :src="`assets/img/${resource.image}`" :alt="resource.name" />
                                 <dl>
                                     <dt>{{ resource.name | capitalize }}</dt>
@@ -47,7 +41,6 @@
                     </div>
 
                 </div>
-
             </div>
             <Footer />
             
@@ -74,14 +67,21 @@ export default {
             params: {
                 show: 20,
                 start: 0,
-                end: 20
+                end: 20,
+                categorie: null
             }
         }
     },
     computed: {
         resources() {
-            // Return les n resources en fonction des params
-            return this.$store.getters.getResources(this.params)
+            if (this.params.categorie !== null) {
+                // Return les n resources en fonction de la catégorie
+                return  this.$store.getters.getResourcesByCategoriesId(this.params)
+            }
+            else {
+                // Return les n resources en fonction des params
+                return this.$store.getters.getResources(this.params)
+            }
         },
         categories() {
             return function (resource) {
@@ -112,6 +112,10 @@ export default {
                 this.params.end -= this.params.show
                 window.scroll(0,0)
             }
+        },
+        categorieFilter(value) {
+                this.params.categorie = value
+                return this.params.categorie
         }
     },
     filters: {
@@ -122,7 +126,7 @@ export default {
         // Tronque le texte
         truncate(str, start, end) {
             return str.substring(start, end) + "..."
-        },
+        }
     },
     created() {
         this.$store.dispatch('setCategories')

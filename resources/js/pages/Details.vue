@@ -111,6 +111,11 @@
         },
         data() {
             return {
+                params: {
+                    start: 0,
+                    end: 4,
+                    categorie: null
+                }
             }
         }, 
         methods: {
@@ -147,9 +152,8 @@
                 return  this.$store.getters.getUsersByCommentId
             },
             moreResources() {
-                let categorieId = this.resource.categorie_id
-                console.log('categorie id de la ressource = ', categorieId)
-                return  this.$store.getters.getResourcesByCategoriesId(categorieId)
+                this.params.categorie = this.resource.categorie_id
+                return  this.$store.getters.getResourcesByCategoriesId(this.params)
             }
 
         }
