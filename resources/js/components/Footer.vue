@@ -50,9 +50,10 @@
             You will be informed monthly about the latest content avalaible.
         </div>
         <div id="main_tip_newsletter">
-            <form>
-            <input type="text" name="newsletter" id="tip_newsletter_input" list="newsletter" autocomplete=off required>
+            <form @submit.prevent="add" method="POST">
+            <input v-model="email" type="text" name="newsletter" id="tip_newsletter_input" list="newsletter" autocomplete=off required>
             </form>
+            <notifications position="bottom right" />
         </div>
         </div>
 
@@ -77,6 +78,49 @@
 
 <script>
 export default {
-    name: "Footer"
+    name: "Footer",
+    data() {
+        return {
+            email: ''
+        }
+    },
+    methods: {
+        add() {
+            // Check la validité de l'email via un regex
+            if( /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(this.email)) {
+                axios.post('api/newsletters/', {email: this.email})
+                     .then(response => {
+                         // Notification si ok
+                        this.$notify({
+                            title: 'Thank you !',
+                            text: 'Thank you for your subscription',
+                            type: 'success',
+                            speed: 600
+                            })
+                        this.email = ''
+                    
+                     })
+                     .catch(() => {
+                         // Notification si problème durant la transaction
+                        this.$notify({
+                                title: 'Oups...',
+                                text: 'There is a problem with your subscribtion',
+                                type: 'error',
+                                speed: 600
+                                })
+                        this.email = ''
+                     })
+            }
+            else {
+                // Notification si email n'est pas valide
+                this.$notify({
+                        title: 'Oups...',
+                        text: 'Your email address is not valid',
+                        type: 'warn',
+                        speed: 600
+                        })
+            }
+        }
+    }
 }
 </script>

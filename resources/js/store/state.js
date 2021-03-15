@@ -2,7 +2,8 @@ const state = {
     resources: [],
     categories: [],
     comments: [],
-    users: []
+    users: [],
+    connectedUser: null
 }
 
 export default state

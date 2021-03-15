@@ -31,17 +31,19 @@
                     <div id="wrapper-oldnew">
                         <div class="oldnew">
                             <div class="wrapper-oldnew-prev">
-                                <div id="oldnew-prev" class="disabled"></div>
+                                <div id="oldnew-prev" @click="previousResources" :class="params.start === 0?'disabled':''"></div>
                             </div>
                             <div class="wrapper-oldnew-next">
-                                <div id="oldnew-next"></div>
+                                <div id="oldnew-next" @click="nextResources" :class="params.end === $store.state.resources.length?'disabled':''"></div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
             </div>
             <Footer />
+            
         </div>
     </div>
 </template>
@@ -52,61 +54,90 @@
     import Nav from '../components/Nav'
     import Footer from '../components/Footer'
 
-    export default {
-        name: "Homepage",
-        components: {
-            Header,
-            FilterMenu,
-            Nav,
-            Footer
-        },
-        data() {
-            return {
-                params: {
-                    start: 0,
-                    end: 20,
-                    categorie: null
-                }
+export default {
+    name: "Homepage",
+    components: {
+        Header,
+        FilterMenu,
+        Nav,
+        Footer
+    },
+    data() {
+        return {
+            params: {
+                show: 20,
+                start: 0,
+                end: 20,
+                categorie: null
+            }
+        }
+    },
+    computed: {
+        resources() {
+            if (this.params.categorie !== null) {
+                // Return les n resources en fonction de la catégorie
+                return  this.$store.getters.getResourcesByCategoriesId(this.params)
+            }
+            else {
+                // Return les n resources en fonction des params
+                return this.$store.getters.getResources(this.params)
             }
         },
-        computed: {
-            resources() {
-                if (this.params.categorie !== null) {
-                    // Return les n resources en fonction de la catégorie
-                    return  this.$store.getters.getResourcesByCategoriesId(this.params)
-                }
-                else {
-                    // Return les n resources en fonction des params
-                    return this.$store.getters.getResources(this.params)
-                }
-            },
-            categories() {
-                return function (resource) {
-                    // Return les ressources correspondants à la resource demandée
-                    return this.$store.getters.getCategoriesByResourcesId(resource)
-                }
+        categories() {
+            return function (resource) {
+                // Return les ressources correspondants à la resource demandée
+                return this.$store.getters.getCategoriesByResourcesId(resource)
+            }
+        }
+    },
+    methods: {
+        nextResources() {
+            if(this.params.end >= this.$store.state.resources.length){
+                this.params.start
+                this.params.end
+            }
+            else{
+                this.params.start += this.params.show
+                this.params.end += this.params.show
+                window.scroll(0,0)
             }
         },
-        methods: {
-            categorieFilter(value) {
+        previousResources() {
+            if(this.params.start === 0) {
+                this.params.start = 0
+                this.params.end = this.params.show
+            }
+            else{
+                this.params.start -= this.params.show
+                this.params.end -= this.params.show
+                window.scroll(0,0)
+            }
+        },
+        categorieFilter(value) {
                 this.params.categorie = value
                 return this.params.categorie
-            }
-        },
-        filters: {
-            // Majuscule du premier caractère
-            capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1)
-            },
-            // Tronque le texte
-            truncate(str, start, end) {
-                return str.substring(start, end) + "..."
-            }
-        },
-        created() {
-            this.$store.dispatch('setCategories')
-            this.$store.dispatch('setResources')
         }
+    },
+    filters: {
+        // Majuscule du premier caractère
+        capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1)
+        },
+        // Tronque le texte
+        truncate(str, start, end) {
+            return str.substring(start, end) + "..."
+        }
+    },
+    created() {
+        this.$store.dispatch('setCategories')
+        this.$store.dispatch('setResources')
     }
-
+}
 </script>
+
+<style>
+ .disabled {
+     pointer-events: none;
+     opacity: 0.5;
+ }
+</style>
