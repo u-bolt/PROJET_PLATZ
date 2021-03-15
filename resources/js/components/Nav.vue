@@ -2,7 +2,9 @@
   <div id="wrapper-navbar">
     <div class="navbar object">
       <div id="wrapper-bouton-icon">
-        <a v-if="$store.state.connectedUser" href="#"><img class="button-add" src="\assets\img\plus.svg" alt="Add resource"></a>
+        <router-link v-if="$store.state.connectedUser" to="/add">
+          <img class="button-add" src="\assets\img\plus.svg" alt="Add resource">
+        </router-link>
         <a v-if="$store.state.connectedUser && $route.name === 'details'"><img class="button-add" src="\assets\img\edit.svg" alt="Edit resource"></a>
         <a v-if="$store.state.connectedUser && $route.name === 'details'"><img class="button-add" src="\assets\img\remove.svg" alt="Delete resource"></a>
         <div id="bouton-ai" v-for="categorie in categories" :key="categorie.id">

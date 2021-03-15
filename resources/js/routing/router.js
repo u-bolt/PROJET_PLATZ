@@ -6,6 +6,7 @@ import Homepage from '../pages/Homepage'
 import Details from '../pages/Details'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Add from '../pages/Add'
 
 // Création du routing
 Vue.use(Router)
@@ -31,6 +32,11 @@ export default new Router({
             path: '/register',
             name: 'register',
             component: Register
+        },
+        {
+            path: '/add',
+            name: 'add',
+            component: Add
         }
     ]
 })
