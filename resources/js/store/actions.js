@@ -18,6 +18,12 @@ const actions = {
         // Transaction AJAX des users
         axios.get('api/users')
              .then(response => commit('SET_USERS', response.data))
+    },
+    loginUser({commit}, payload) {
+        commit('LOGIN_USER', payload)
+    },
+    logoutUser({commit}) {
+        commit('LOGOUT_USER')
     }
 }
 
