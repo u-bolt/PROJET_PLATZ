@@ -14,16 +14,18 @@ const getters = {
     },
     getResourcesByCategoriesId(state) {
         // Return les ressource en fonction de la categorie_id
-        return function(data){
-            console.log('getResourcesByCategoriesId', {...state.resources.filter(resource => resource.categorie_id == data).slice(0,4)})
-            return [...state.resources.filter(resource => resource.categorie_id == data).slice(0,4)]
+        return function({categorie, start, end}){
+            return [...state.resources.filter(resource => resource.categorie_id == categorie).slice(start,end)]
+            // return [...state.resources.filter(resource => resource.categorie_id == data).slice(0,4)]
         }
 
     },
     // CATEGORIES
     getCategories(state) {
         // Return les catégories
-        return state.categories
+        return function() {
+            return state.categories
+        }
     },
     getCategoriesByResourcesId(state) {
         // Return la catégorie en fonction de la categorie_id
