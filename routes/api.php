@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Resources;
@@ -41,3 +42,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // API DES USERS
 // CTRL: Users
     Route::resource('users', Users::class)->except(['show', 'create', 'edit']);
+
+    // Route::post('/register', [AuthController::class, 'regsiter']);
+
+// CONNECTION
+    Route::post('/login', [AuthController::class, 'login']);
+
+// ENREGISTREMENT
+Route::post('/register', [AuthController::class, 'register']);
+
+
+    Route::group(['middleware' => ['auth:sanctum']], function() {
+        // DECONNECTION
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
