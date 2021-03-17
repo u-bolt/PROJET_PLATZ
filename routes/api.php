@@ -7,6 +7,7 @@ use App\Http\Controllers\Resources;
 use App\Http\Controllers\Categories;
 use App\Http\Controllers\Newsletters;
 use App\Http\Controllers\Comments;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Users;
 
 /*
@@ -50,6 +51,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // ENREGISTREMENT
 Route::post('/register', [AuthController::class, 'register']);
+
+// RECHERCHE
+// CTRL: Search
+    Route::get('/search', [SearchController::class, 'search']);
 
 
     Route::group(['middleware' => ['auth:sanctum']], function() {

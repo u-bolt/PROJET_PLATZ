@@ -17,7 +17,8 @@
             </template>
             <div id="main_tip_search">
             <form>
-                <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
+                <!-- <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required> -->
+                <Search />
             </form>
             </div>
             
@@ -27,8 +28,12 @@
 </template>
 
 <script>
+import Search from './Search'
     export default {
         name: "Header",
+        components: {
+            Search
+        },
         methods: {
             logout() {
                 axios.post('/api/logout', {user: this.$store.state.connectedUser})
@@ -36,7 +41,10 @@
                         this.$store.dispatch('logoutUser', response.data)
                     })
                 
-            }
+            },
+            // search(value) {
+            //     console.log('from parent', value)
+            // }
         }
     }
 </script>
