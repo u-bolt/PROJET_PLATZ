@@ -56,28 +56,27 @@
 
                         </div>
 
-
-                        <div class="post-reply">
-                            <div id="title-post-send">
-                                <hr />
-                                <h2>Your comments</h2>
+                            <div class="post-reply">
+                                <div id="title-post-send">
+                                    <hr />
+                                    <h2 v-show="comments(resource).length > 0">Your comments</h2>
+                                </div>
                             </div>
-                        </div>
 
-                        <div :key="index" v-for="(comment, index) in comments(resource) " class="post-reply">
-                            <div class="image-reply-post"></div>
-                            <div class="name-reply-post">{{ userComment(comment).firstname }} {{ userComment(comment).lastname }} </div>
-                            <div class="text-reply-post">{{ comment.content }}</div>
-                        </div>
+                            <div :key="index" v-for="(comment, index) in comments(resource) " class="post-reply">
+                                <div class="image-reply-post"></div>
+                                <div class="name-reply-post">{{ userComment(comment).firstname }} {{ userComment(comment).lastname }} </div>
+                                <div class="text-reply-post">{{ comment.content }}</div>
+                            </div>
 
 
-                        <div class="post-send">
+                        <div class="post-send" v-if="$store.state.connectedUser">
                             <div id="main-post-send">
                                 <div id="title-post-send">  Add your comment</div>
-                                <form id="contact" method="post" action="/onclickprod/formsubmit_op.asp">
+                                <form id="contact" @submit.prevent="addComment">
                                     <fieldset>
                                         <p>
-                                            <textarea id="message" name="message" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea>
+                                            <textarea v-model="formData.comment" id="message" name="message" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea>
                                         </p>
                                     </fieldset>
                                     <div style="text-align:center;"><input type="submit" name="envoi" value="Envoyer" />
@@ -115,6 +114,11 @@
                     start: 0,
                     end: 4,
                     categorie: null
+                },
+                formData: {
+                    comment: '',
+                    resource: null,
+                    user: null
                 }
             }
         }, 
@@ -123,6 +127,23 @@
                 if (value) {
                     return moment(String(value)).format("MMM DD, YYYY ")
                 }
+            },
+            addComment() {
+                this.formData.resource = this.resource.id
+                this.formData.user = this.$store.state.connectedUser.id
+                axios.post('/api/comments/add', this.formData)
+                     .then(res => {
+                        this.$store.dispatch('addComment', res.data)
+                        this.formData.comment = ''
+                     })
+                     .catch(e => {
+                         this.$notify({
+                            title: 'Aie...',
+                            text: 'A problem occurred while adding your comment',
+                            type: 'error',
+                            speed: 600
+                        })
+                     })
             }
         },
         computed: {

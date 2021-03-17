@@ -20,6 +20,9 @@ const mutations = {
     },
     LOGOUT_USER(state, payload) {
         state.connectedUser = null
+    },
+    ADD_COMMENT(state, payload) {
+        state.comments.push(payload)
     }
 }
 
