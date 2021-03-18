@@ -57,5 +57,7 @@ Route::post('/register', [AuthController::class, 'register']);
         Route::post('/logout', [AuthController::class, 'logout']);
         // ADD
         Route::post('/add', [Resources::class, 'add']);
+        // EDIT
+        Route::post('/edit', [Resources::class, 'edit']);
     });
 

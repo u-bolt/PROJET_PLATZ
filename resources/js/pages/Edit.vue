@@ -1,18 +1,18 @@
 <template>
-  <div class="container-add">
-      <h2 id="title-add">Platz</h2>
-      <h3 id="title-add-resource">Ajouter une ressource</h3>
+  <div class="container-edit">
+      <h2 id="title-edit">Platz</h2>
+      <h3 id="title-edit-resource">Modifier une ressource</h3>
 
-      <form action="#" @submit.prevent="add" class="add-form">
+      <form action="#" @submit.prevent="edit" class="edit-form">
           <input v-model="formData.name" type="text" placeholder="name"/>
           <textarea v-model="formData.description" name="" placeholder="description" cols="30" rows="10"></textarea>
           <!-- <label for="file" class="label-file">-- Choisir une image --</label> -->
           <!-- <input id="file" class="input-file" type="file"/> -->
           <select v-model="formData.categorie" id="options">
-              <option value="">-- Catégorie --</option>
+              <option :value="resource.categorie_id" selected>{{ categorie(resource).name }}</option>
               <option v-for="categorie in categories" :key="categorie.id"  :value="categorie.id">{{categorie.name}}</option>
           </select>
-          <button id="submit">Ajouter</button>
+          <button id="submit">Modifier</button>
       </form>
 
   </div>
@@ -20,10 +20,11 @@
 
 <script>
 export default {
-    name: 'Add',
+    name: 'Edit',
     data() {
         return {
             formData: {
+              id: null,
               name: '',
               description: '',
               categorie: '',
@@ -35,17 +36,27 @@ export default {
         categories() {
             // Return les ressources correspondants à la resource demandée
             return this.$store.getters.getCategories()
-        }
+        },
+        resource() {
+          let id = this.$route.params.id
+          return this.$store.getters.getResourceById(id)
+        },
+        categorie() {
+            return function(resource) {
+                // Return les ressources correspondants à la resource demandée
+                return this.$store.getters.getCategoriesByResourcesId(resource)
+            }
+        },
     },
     methods: {
-        add() {
+        edit() {
           this.formData.user = this.$store.state.connectedUser.id
-          axios.post('/api/add', this.formData)
+          axios.post('/api/edit', this.formData)
                .then(response => {
                     // Notification si OK
                     this.$notify({
                       title: 'Thank you !',
-                      text: 'The resource has been added!',
+                      text: 'The resource has been modified!',
                       type: 'success',
                       speed: 600
                       })
@@ -54,20 +65,27 @@ export default {
                          // Notification si problème durant la transaction
                         this.$notify({
                                 title: 'Oups...',
-                                text: 'There is a problem with adding',
+                                text: 'There is a problem during modification',
                                 type: 'error',
                                 speed: 600
                                 })
                      })
           this.$router.push("/")  
        }
+    },
+    created() {
+      this.formData.name = this.resource.name
+      this.formData.description = this.resource.description
+      this.formData.categorie = this.resource.categorie_id
+      this.formData.id = this.$route.params.id
     }
+  
 }
 </script>
 
 <style>
 
-     .container-add {
+     .container-edit {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -75,7 +93,7 @@ export default {
           justify-content: center;
       }
 
-    #title-add {
+    #title-edit {
         font-family: 'Pacifico', cursive;
         color: #2E2D30;
         margin: 0 0 10px 0;
@@ -83,7 +101,7 @@ export default {
         padding-top: 25px;
       }
 
-    #title-add-resource {
+    #title-edit-resource {
       font-family: Helvetica, sans-serif;
       font-size: 16px;
       font-weight: 600; 
@@ -92,7 +110,7 @@ export default {
     }
   
    
-    .add-form {
+    .edit-form {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -116,7 +134,7 @@ export default {
     }
 
     textarea {
-      height: 80px;
+      height: auto;
     }
 
     select {
