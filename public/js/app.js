@@ -2136,11 +2136,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Nav",
   props: ['resourceId'],
   data: function data() {
-    return {};
+    return {
+      params: {
+        id: ''
+      }
+    };
   },
   computed: {
     categories: function categories() {
@@ -2154,6 +2164,29 @@ __webpack_require__.r(__webpack_exports__);
     },
     noFilter: function noFilter() {
       return this.$emit('filter', null);
+    },
+    supprimer: function supprimer() {
+      var _this = this;
+
+      this.params.id = this.resourceId;
+      axios.post('/api/delete', this.params).then(function (response) {
+        // Notification si OK
+        _this.$notify({
+          title: 'Thank you !',
+          text: 'The resource has been deleted!',
+          type: 'success',
+          speed: 600
+        });
+      })["catch"](function () {
+        // Notification si problème durant la transaction
+        _this.$notify({
+          title: 'Oups...',
+          text: 'There is a problem during deletion',
+          type: 'error',
+          speed: 600
+        });
+      });
+      this.$router.push("/");
     }
   }
 });
@@ -7692,7 +7725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.button-add {\n  float:left;\n\twidth:28px;\n\theight:28px;\n\tmargin-top:16px;\n\tmargin-right:15px;\n\tcursor:pointer;\n\topacity:1;\n\t transition: all 0.2s ease-in-out;\n    -webkit-transition: all 0.2s ease-in-out;\n    -moz-transition: all 0.2s ease-in-out;\n    -o-transition: all 0.2s ease-in-out;\n    -ms-transition: all 0.2s ease-in-out;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.button-add {\n    float: left;\n    width: 28px;\n    height: 28px;\n    margin-top: 16px;\n    margin-right: 15px;\n    cursor: pointer;\n    opacity: 1;\n    transition: all 0.2s ease-in-out;\n    -webkit-transition: all 0.2s ease-in-out;\n    -moz-transition: all 0.2s ease-in-out;\n    -o-transition: all 0.2s ease-in-out;\n    -ms-transition: all 0.2s ease-in-out;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62247,6 +62280,11 @@ var render = function() {
                   attrs: {
                     src: "\\assets\\img\\remove.svg",
                     alt: "Delete resource"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.supprimer()
+                    }
                   }
                 })
               ])

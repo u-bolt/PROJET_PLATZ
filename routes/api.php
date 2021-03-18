@@ -59,5 +59,7 @@ Route::post('/register', [AuthController::class, 'register']);
         Route::post('/add', [Resources::class, 'add']);
         // EDIT
         Route::post('/edit', [Resources::class, 'edit']);
+         // DELETE
+         Route::post('/delete', [Resources::class, 'delete']);
     });
 

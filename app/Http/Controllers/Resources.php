@@ -46,4 +46,10 @@ class Resources extends Controller
             'message' => 'Ok'
         ]);
     }
+
+
+    public function delete(Request $request) {
+        $resource = Resource::find($request->id);
+        $resource->delete();
+    }
 }
