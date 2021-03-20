@@ -62064,7 +62064,7 @@ var render = function() {
                     ? _c("div", { staticClass: "post-send" }, [
                         _c("div", { attrs: { id: "main-post-send" } }, [
                           _c("div", { attrs: { id: "title-post-send" } }, [
-                            _vm._v("  Add your comment")
+                            _vm._v("Add your comment")
                           ]),
                           _vm._v(" "),
                           _c(

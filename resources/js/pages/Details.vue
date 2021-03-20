@@ -72,7 +72,7 @@
 
                         <div class="post-send" v-if="$store.state.connectedUser">
                             <div id="main-post-send">
-                                <div id="title-post-send">  Add your comment</div>
+                                <div id="title-post-send">Add your comment</div>
                                 <form id="contact" @submit.prevent="addComment">
                                     <fieldset>
                                         <p>
