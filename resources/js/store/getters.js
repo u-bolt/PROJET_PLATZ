@@ -16,7 +16,6 @@ const getters = {
         // Return les ressource en fonction de la categorie_id
         return function({categorie, start, end}){
             return [...state.resources.filter(resource => resource.categorie_id == categorie).slice(start,end)]
-            // return [...state.resources.filter(resource => resource.categorie_id == data).slice(0,4)]
         }
 
     },
