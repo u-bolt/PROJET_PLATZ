@@ -3271,7 +3271,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var mutations = {
   SET_RESOURCES: function SET_RESOURCES(state, payload) {
-    // Hydratation des ressources
+    payload.sort(function (a, b) {
+      return new Date(b.created_at) - new Date(a.created_at);
+    }); // Hydratation des ressources
+
     state.resources = payload;
   },
   SET_CATEGORIES: function SET_CATEGORIES(state, payload) {
