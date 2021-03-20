@@ -77,11 +77,11 @@ $(document).on('touchend mouseout', '#stripes', function(event){
 
 /* MENU SIDE OPEN */
 
-var MENUSIDEOPEN = document.getElementById('stripes');
+// var MENUSIDEOPEN = document.getElementById('stripes');
 
-MENUSIDEOPEN.addEventListener('click', function() {
-			   $("#main-container-menu").stop().animate({left:'0'},300); // filterMenu
-}); 
+// MENUSIDEOPEN.addEventListener('click', function() {
+// 			   $("#main-container-menu").stop().animate({left:'0'},300); // filterMenu
+// }); 
 
 /* BOUTON CROSS */
 
@@ -115,11 +115,11 @@ $(document).on('touchend mouseout', '#cross-menu', function(event){
 
 /* MENU SIDE CLOSE */
 
-var MENUSIDECLOSE = document.getElementById('cross-menu');
+// var MENUSIDECLOSE = document.getElementById('cross-menu');
 
-MENUSIDECLOSE.addEventListener('click', function() {
-			   $("#main-container-menu").stop().animate({'left':'-100%'},300);	
-}); 
+// MENUSIDECLOSE.addEventListener('click', function() {
+// 			   $("#main-container-menu").stop().animate({'left':'-100%'},300);	
+// }); 
 
 /* BOUTON MENU ARROW-2 */
 
