@@ -16,7 +16,7 @@ const mutations = {
         state.users = payload
     },
     LOGIN_USER(state, payload) {
-        state.connectedUser = {...payload.user}
+        state.connectedUser = payload
     },
     LOGOUT_USER(state, payload) {
         state.connectedUser = null

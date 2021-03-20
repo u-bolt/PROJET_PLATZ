@@ -1,6 +1,6 @@
 <template>
   <div class="container-login">
-      <h2 id="title-register">Platz</h2>
+      <h2 id="title-register"><router-link to="/">Platz</router-link></h2>
       <h3>Register</h3>
       <form action="#" @submit.prevent="login" class="register-form">
           <input type="text" v-model="formData.firstname" placeholder="Firstname"/>
@@ -128,5 +128,9 @@ export default {
         color: #2E2D30;
         margin: 0 0 50px 0;
         font-size: 100px
+    }
+
+    #title-register a {
+        color: #2E2D30;
     }
 </style>
