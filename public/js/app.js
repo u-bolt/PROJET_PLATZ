@@ -2294,7 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
       this.timer = null;
       this.searchData = null;
 
-      if (this.value) {
+      if (this.value.trim()) {
         this.timer = setTimeout(function () {
           axios.get('api/search', {
             params: {
