@@ -1,8 +1,8 @@
 <template>
     <div>
       <Header />
-      <Nav />
-      <FilterMenu />
+      <Nav :resourceId="resourceId" />
+      <FilterMenu :resourceId="resourceId"/>
         <!-- PORTFOLIO -->
         <div id="wrapper-container">
             <div class="container object">
@@ -119,7 +119,8 @@
                     comment: '',
                     resource: null,
                     user: null
-                }
+                },
+                resourceId: null
             }
         }, 
         methods: {
@@ -149,6 +150,7 @@
         computed: {
             resource() {
                 let id = this.$route.params.id
+                this.resourceId = id
                 return this.$store.getters.getResourceById(id)
             },
             categorie() {
