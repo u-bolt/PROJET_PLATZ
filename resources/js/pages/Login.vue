@@ -1,6 +1,6 @@
 <template>
   <div class="container-login">
-      <h2 id="title-login">Platz</h2>
+      <h2 id="title-login"><router-link to="/">Platz</router-link></h2>
       <form action="#" @submit.prevent="login" class="login-form">
           <input type="text" v-model="formData.email" placeholder="Login"/>
           <input type="password" v-model="formData.password" placeholder="Password"/>
@@ -25,8 +25,20 @@ export default {
         login() {
             axios.get('/sanctum/csrf-cookie').then(response => {
                 axios.post('/api/login', this.formData).then(response => {
-                    this.$store.dispatch('loginUser', response.data)
-                    this.$router.push({name: "homepage"})
+                    if(response.data.status_code == 200) {
+                        this.$store.dispatch('loginUser', response.data.user)
+                        let temp = JSON.stringify(response.data.user)
+                        sessionStorage.setItem('user', temp)
+                        this.$router.push({name: "homepage"})
+                    }
+                    else if(response.data.status_code === 400) {
+                        this.$notify({
+                            title: 'Oups...',
+                            text: 'There is a problem with your email or your password',
+                            type: 'error',
+                            speed: 600
+                        })
+                    }
                 })
             });
         }
@@ -87,6 +99,10 @@ export default {
         color: #2E2D30;
         margin: 0 0 50px 0;
         font-size: 100px
+    }
+
+    #title-login a {
+        color: #2E2D30;
     }
 
     .not-login {
