@@ -29,9 +29,9 @@
                     </section>
 
                     <div id="wrapper-oldnew">
-                        <div class="oldnew">
+                        <div class="oldnew" v-show="!(resources.length < params.end)">
                             <div class="wrapper-oldnew-prev">
-                                <div id="oldnew-prev" @click="previousResources" :class="params.start === 0?'disabled':''"></div>
+                                <div id="oldnew-prev" @click="previousResources" :class="params.start === 0 ?'disabled':''"></div>
                             </div>
                             <div class="wrapper-oldnew-next">
                                 <div id="oldnew-next" @click="nextResources" :class="params.end === $store.state.resources.length?'disabled':''"></div>
@@ -115,7 +115,9 @@ export default {
         },
         categorieFilter(value) {
                 this.params.categorie = value
-                return this.params.categorie
+                this.params.show = 20
+                this.params.start = 0
+                this.params.end = 20
         }
     },
     filters: {

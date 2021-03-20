@@ -44,8 +44,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // CTRL: Users
     Route::resource('users', Users::class)->except(['show', 'create', 'edit']);
 
-    // Route::post('/register', [AuthController::class, 'regsiter']);
-
 // CONNECTION
     Route::post('/login', [AuthController::class, 'login']);
 
