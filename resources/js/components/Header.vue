@@ -16,10 +16,7 @@
                 <button class="connection-button"><router-link to="/register">Sign in</router-link></button>
             </template>
             <div id="main_tip_search">
-            <form>
-                <!-- <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required> -->
                 <Search />
-            </form>
             </div>
             
         </div>
@@ -41,10 +38,7 @@ import Search from './Search'
                         this.$store.dispatch('logoutUser', response.data)
                     })
                 
-            },
-            // search(value) {
-            //     console.log('from parent', value)
-            // }
+            }
         }
     }
 </script>

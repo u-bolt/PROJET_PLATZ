@@ -2083,9 +2083,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Header",
@@ -2101,10 +2098,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.$store.dispatch('logoutUser', response.data);
       });
-    } // search(value) {
-    //     console.log('from parent', value)
-    // }
-
+    }
   }
 });
 
@@ -2232,6 +2226,23 @@ __webpack_require__.r(__webpack_exports__);
       this.value = '';
       this.searchData = null;
       this.timer = null;
+    }
+  },
+  directives: {
+    "click-outside": {
+      bind: function bind(el, binding) {
+        var clickEventHandler = function clickEventHandler(event) {
+          if (!el.contains(event.target) && el !== event.target) {
+            binding.value(event);
+          }
+        };
+
+        el.eventHandler = clickEventHandler;
+        document.addEventListener("click", clickEventHandler);
+      },
+      unbind: function unbind(el) {
+        document.removeEventListener("click", el.eventHandler);
+      }
     }
   }
 });
@@ -7613,7 +7624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search-container {\r\n    background: #2E2D30;\r\n    position: relative;\r\n    right: 5.7em;\r\n    display: flex;\r\n    border-radius: 5px;\r\n    margin-top: 20px;\r\n    z-index: 9998;\r\n    width: 20em;\n}\n.search-container ul {\r\n    background: #515055;\r\n    border-radius: 5px;\r\n    width: 20em;\n}\n.search-container ul li a {\r\n    display: block;\r\n    color: #fff;\r\n    border-radius: 5px;\r\n    padding: 15px;\n}\n.search-container ul li a:hover {\r\n    background: #7e7c85;\n}\n.search-icon {\r\n    width:20px;\r\n\theight:20px;\r\n    margin-right: 15px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search-container {\r\n    background: #2E2D30;\r\n    position: relative;\r\n    right: 5.7em;\r\n    display: flex;\r\n    border-radius: 5px;\r\n    margin-top: 5px;\r\n    z-index: 9998;\r\n    width: 20em;\n}\n.search-container ul {\r\n    background: #515055;\r\n    border-radius: 5px;\r\n    width: 20em;\n}\n.search-container ul li a {\r\n    display: block;\r\n    color: #fff;\r\n    border-radius: 5px;\r\n    padding: 15px;\n}\n.search-container ul li a:hover {\r\n    background: #7e7c85;\n}\n.search-icon {\r\n    width:20px;\r\n\theight:20px;\r\n    margin-right: 15px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61919,9 +61930,7 @@ var render = function() {
               ]
             : _vm._e(),
           _vm._v(" "),
-          _c("div", { attrs: { id: "main_tip_search" } }, [
-            _c("form", [_c("Search")], 1)
-          ])
+          _c("div", { attrs: { id: "main_tip_search" } }, [_c("Search")], 1)
         ],
         2
       )
@@ -62093,12 +62102,15 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "search-container",
-        on: {
-          click: function($event) {
-            $event.stopPropagation()
+        directives: [
+          {
+            name: "click-outside",
+            rawName: "v-click-outside",
+            value: _vm.close,
+            expression: "close"
           }
-        }
+        ],
+        staticClass: "search-container"
       },
       [
         _vm.search

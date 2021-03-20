@@ -3,7 +3,7 @@
       <form>
         <input @keyup="search" v-model="value" type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
       </form>
-      <div class="search-container" @click.stop="">
+      <div class="search-container" v-click-outside="close">
         <ul v-if="search">
             <li v-for="s in searchData" :key="s.id" @click="close">
                 <router-link :to="`/details/${s.id}`"><img class="search-icon" :src="`assets/img/${categories(s).icon}`" :alt="categories(s).name"> {{s.name}}</router-link>
@@ -51,6 +51,23 @@ export default {
             this.searchData = null
             this.timer = null
         }
+    },
+    directives: {
+        "click-outside": {
+            bind: function(el, binding) {
+                const clickEventHandler = event => {
+                    if (!el.contains(event.target) && el !== event.target) {
+                        binding.value(event);
+                    }
+                };
+                el.eventHandler = clickEventHandler;
+
+                document.addEventListener("click", clickEventHandler);
+            },
+            unbind: function(el) {
+                document.removeEventListener("click", el.eventHandler);
+            }
+        }
     }
 }
 </script>
@@ -62,7 +79,7 @@ export default {
     right: 5.7em;
     display: flex;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 5px;
     z-index: 9998;
     width: 20em;
 }
