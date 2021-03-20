@@ -15,4 +15,20 @@ class Comments extends Controller
     public function index() {
         return response()->json(Comment::all());
     }
+
+    /**
+     * Ajoute un commentaire
+     *
+     * @param Request $request
+     * @return $comment
+     */
+    public function add(Request $request) {
+        $comment = new Comment();
+        $comment->content = $request->comment;
+        $comment->user_id = $request->user;
+        $comment->resource_id = $request->resource;
+        $comment->updated_at = null;
+        $comment->save();
+        return response()->json($comment);
+    }
 }

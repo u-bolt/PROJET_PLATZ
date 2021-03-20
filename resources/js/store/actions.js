@@ -24,6 +24,9 @@ const actions = {
     },
     logoutUser({commit}) {
         commit('LOGOUT_USER')
+    },
+    addComment({commit}, payload) {
+        commit('ADD_COMMENT', payload)
     }
 }
 

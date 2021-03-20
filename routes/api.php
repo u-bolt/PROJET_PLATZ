@@ -52,7 +52,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 
 
-    Route::group(['middleware' => ['auth:sanctum']], function() {
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::post('/comments/add', [Comments::class, 'add']);
         // DECONNECTION
         Route::post('/logout', [AuthController::class, 'logout']);
     });

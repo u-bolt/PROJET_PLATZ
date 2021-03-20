@@ -2268,7 +2268,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2287,6 +2286,11 @@ __webpack_require__.r(__webpack_exports__);
         start: 0,
         end: 4,
         categorie: null
+      },
+      formData: {
+        comment: '',
+        resource: null,
+        user: null
       }
     };
   },
@@ -2295,6 +2299,24 @@ __webpack_require__.r(__webpack_exports__);
       if (value) {
         return moment__WEBPACK_IMPORTED_MODULE_4___default()(String(value)).format("MMM DD, YYYY ");
       }
+    },
+    addComment: function addComment() {
+      var _this = this;
+
+      this.formData.resource = this.resource.id;
+      this.formData.user = this.$store.state.connectedUser.id;
+      axios.post('/api/comments/add', this.formData).then(function (res) {
+        _this.$store.dispatch('addComment', res.data);
+
+        _this.formData.comment = '';
+      })["catch"](function (e) {
+        _this.$notify({
+          title: 'Aie...',
+          text: 'A problem occurred while adding your comment',
+          type: 'error',
+          speed: 600
+        });
+      });
     }
   },
   computed: {
@@ -2788,6 +2810,10 @@ var actions = {
   logoutUser: function logoutUser(_ref6) {
     var commit = _ref6.commit;
     commit('LOGOUT_USER');
+  },
+  addComment: function addComment(_ref7, payload) {
+    var commit = _ref7.commit;
+    commit('ADD_COMMENT', payload);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
@@ -2939,6 +2965,9 @@ var mutations = {
   },
   LOGOUT_USER: function LOGOUT_USER(state, payload) {
     state.connectedUser = null;
+  },
+  ADD_COMMENT: function ADD_COMMENT(state, payload) {
+    state.comments.push(payload);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mutations);
@@ -7539,7 +7568,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_public_assets_img_avatar_png__WEBPACK_IMPORTED_MODULE_2__.default);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_public_assets_img_avatar_2_png__WEBPACK_IMPORTED_MODULE_3__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n\r\n/*----------------------------*/\r\n/* MAIN DIV WITH IMAGE */\r\n/*----------------------------*/\n#main-container-image[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    height: auto;\r\n    background-color: #F4F4F4;\r\n    margin-top: 25px;\r\n    opacity: 0;\n}\n.work figure-single[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 60%;\r\n    margin-left: 7.5%;\r\n    height: auto;\r\n    padding: 0 !important;\r\n    transition: all 0.3s ease-in-out;\r\n    -webkit-transition: all 0.3s ease-in-out;\r\n    -moz-transition: all 0.3s ease-in-out;\r\n    -o-transition: all 0.3s ease-in-out;\r\n    -ms-transition: all 0.3s ease-in-out;\r\n    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);\r\n    background-color: #FFF;\n}\n.work figure-single img[data-v-f8dfcc6e] {\r\n    height: 95%;\r\n    width: 95%;\r\n    margin-left: 2.5%;\r\n    margin-top: 2.5%;\n}\n.white[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 52.5%;\n}\n.white img[data-v-f8dfcc6e] {\r\n    width: 100%;\n}\n.part-info-image-single[data-v-f8dfcc6e] {\r\n    float: left;\r\n    margin-bottom: 17.5px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n    height: 20%;\r\n    width: 20%;\n}\n.wrapper-text-description[data-v-f8dfcc6e] {\r\n    position: absolute;\r\n    width: 35%;\r\n    right: 5.5%;\r\n    height: auto;\r\n    margin-top: 85px;\n}\n.wrapper-view[data-v-f8dfcc6e],\r\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weight[data-v-f8dfcc6e],\r\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    border-bottom: solid #E0E0E0 1px;\n}\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weight[data-v-f8dfcc6e],\r\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e] {\r\n    border-top: solid #FFF 1px;\n}\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    border-top: solid #FFF 1px;\n}\n.wrapper-view[data-v-f8dfcc6e],\r\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weigh[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e],\r\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    height: 40px;\n}\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    height: auto;\n}\n.icon-view[data-v-f8dfcc6e],\r\n.icon-file[data-v-f8dfcc6e],\r\n.icon-weight[data-v-f8dfcc6e],\r\n.icon-desc[data-v-f8dfcc6e],\r\n.icon-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    left: 0;\r\n    margin-right: 25px;\n}\n.icon-view[data-v-f8dfcc6e] {\r\n    margin-top: 10px;\n}\n.icon-file[data-v-f8dfcc6e] {\r\n    margin-top: 9px;\r\n    margin-left: 2px;\n}\n.icon-weight[data-v-f8dfcc6e] {\r\n    margin-top: 8px;\r\n    margin-left: 2px;\n}\n.icon-desc[data-v-f8dfcc6e] {\r\n    margin-top: 7px;\n}\n.icon-download[data-v-f8dfcc6e] {\r\n    margin-top: 6px;\r\n    margin-left: 3px;\n}\n.icon-view img[data-v-f8dfcc6e],\r\n.icon-file img[data-v-f8dfcc6e],\r\n.icon-weight img[data-v-f8dfcc6e],\r\n.icon-desc img[data-v-f8dfcc6e],\r\n.icon-download img[data-v-f8dfcc6e] {\r\n    height: 100%;\r\n    width: 100%;\n}\n.text-view[data-v-f8dfcc6e],\r\n.text-file[data-v-f8dfcc6e],\r\n.text-weight[data-v-f8dfcc6e],\r\n.text-desc[data-v-f8dfcc6e],\r\n.text-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    font-family: Helvetica, sans-serif;\r\n    font-size: 15px;\r\n    font-weight: 400;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    color: #A1A1A1;\n}\n.text-view[data-v-f8dfcc6e],\r\n.text-file[data-v-f8dfcc6e],\r\n.text-weight[data-v-f8dfcc6e],\r\n.text-download[data-v-f8dfcc6e] {\r\n    height: 40px;\r\n    line-height: 40px;\n}\n.text-desc[data-v-f8dfcc6e] {\r\n    width: calc(100% - 49px);\r\n    line-height: 130%;\r\n    height: auto;\r\n    margin-bottom: 25px;\r\n    margin-top: 10px;\n}\n.text-download a[data-v-f8dfcc6e] {\r\n    color: #A1A1A1;\r\n    transition: all 0.2s ease-in-out;\r\n    -webkit-transition: all 0.2s ease-in-out;\r\n    -moz-transition: all 0.2s ease-in-out;\r\n    -o-transition: all 0.2s ease-in-out;\n}\n.text-download a[data-v-f8dfcc6e]:hover {\r\n    color: #666;\n}\n.text-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    width: 100%;\r\n    margin-left: 0;\r\n    line-height: 130%;\r\n    height: auto;\r\n    margin-bottom: 0;\r\n    margin-top: 20px;\n}\n.image-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    margin-top: 20px;\r\n    height: auto;\r\n    margin-bottom: 35px;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-2[data-v-f8dfcc6e],\r\n.image-morefrom-3[data-v-f8dfcc6e],\r\n.image-morefrom-4[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 47.5%;\r\n    height: auto;\r\n    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);\r\n    background-color: #FFF;\r\n    transition: all 0.2s ease-in-out;\r\n    -webkit-transition: all 0.2s ease-in-out;\r\n    -moz-transition: all 0.2s ease-in-out;\r\n    -o-transition: all 0.2s ease-in-out;\r\n    cursor: pointer;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-3[data-v-f8dfcc6e] {\r\n    margin-right: 5%;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-2[data-v-f8dfcc6e] {\r\n    margin-bottom: 12.5px;\n}\n.image-morefrom-1 img[data-v-f8dfcc6e],\r\n.image-morefrom-2 img[data-v-f8dfcc6e],\r\n.image-morefrom-3 img[data-v-f8dfcc6e],\r\n.image-morefrom-4 img[data-v-f8dfcc6e] {\r\n    width: 85%;\r\n    height: auto;\r\n    margin-left: 7.5%;\r\n    padding-bottom: 7.5%;\r\n    padding-top: 7.5%;\n}\n.image-morefrom-1[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-2[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-3[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-4[data-v-f8dfcc6e]:hover {\r\n    opacity: 0.5;\n}\n.post-reply[data-v-f8dfcc6e],\r\n.post-reply-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 53%;\r\n    margin-left: 4%;\r\n    height: auto;\n}\n.post-reply[data-v-f8dfcc6e] {\r\n    margin-top: 50px;\n}\n.image-reply-post[data-v-f8dfcc6e],\r\n.image-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 65px;\r\n    height: 65px;\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat;\r\n    top: 0;\n}\n.image-reply-post[data-v-f8dfcc6e] {\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat;\n}\n.image-reply-post-2[data-v-f8dfcc6e] {\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") no-repeat;\n}\n.name-reply-post[data-v-f8dfcc6e],\r\n.name-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: calc(100% - 95px);\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 65px;\r\n    height: 65px;\r\n    padding-left: 30px;\n}\n.text-reply-post[data-v-f8dfcc6e],\r\n.text-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    height: auto;\r\n    line-height: 140%;\r\n    margin-left: 95px;\r\n    width: calc(90% - 95px);\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    color: #999;\r\n    margin-top: -10px;\r\n    border-bottom: solid #E9E9E9 1px;\r\n    padding: 20px;\r\n    margin-top: -20px;\n}\n.post-send[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 60%;\r\n    margin-left: 7.5%;\r\n    height: auto;\r\n    margin-bottom: 25px;\n}\n#main-post-send[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: calc(90% - 160px);\r\n    margin-left: 95px;\r\n    height: auto;\r\n    margin-top: 0px;\n}\n#title-post-send[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 65px;\r\n    height: 65px;\r\n    position: relative;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    color: #999;\r\n    width: 320px;\r\n    height: 150px;\r\n    background: #FFF;\r\n    outline: none;\r\n    border: solid 1px #DDDDDD;\r\n    border-radius: 4px;\r\n    padding-left: 10px;\r\n    padding-top: 10px;\r\n    float: left;\r\n    margin-left: -15px;\r\n    margin-top: -25px;\n}\ninput[type=submit][data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #FFF;\r\n    cursor: pointer;\r\n    width: 150px;\r\n    height: 40px;\r\n    padding: 5px 10px;\r\n    border-radius: 4px;\r\n    transition: all 0.5s ease-in-out;\r\n    -webkit-transition: all 0.5s ease-in-out;\r\n    /** Chrome & Safari **/\r\n    -moz-transition: all 0.5s ease-in-out;\r\n    /** Firefox **/\r\n    -o-transition: all 0.5s ease-in-out;\r\n    /** Opera **/\r\n    background-color: #74BDEC;\r\n    float: left;\r\n    border: none;\n}\nfieldset[data-v-f8dfcc6e] {\r\n    border: none;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    resize: vertical;\r\n    max-height: 100px;\r\n    min-height: 100px;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    color: #999;\n}\ntextarea[data-v-f8dfcc6e]:-moz-placeholder {\r\n    color: #999;\n}\ntextarea[data-v-f8dfcc6e]::-webkit-input-placeholder {\r\n    color: #999;\n}\ntextarea.placeholder[data-v-f8dfcc6e] {\r\n    color: #999;\n}\n.title-item[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 92.5%;\r\n    margin-left: 7.5%;\r\n    margin-top: 15px;\r\n    height: 68px;\r\n    margin-bottom: 10px;\n}\n.title-icon[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 68px;\r\n    height: 68px;\r\n    margin-right: 20px;\n}\n.title-text[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 22px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 125%;\r\n    height: auto;\r\n    width: calc(100% - 88px);\r\n    margin-top: 8px;\n}\n.title-text-2[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 15px;\r\n    font-weight: 400;\r\n    color: #A1A1A1;\r\n    line-height: 125%;\r\n    height: auto;\r\n    width: calc(100% - 88px);\r\n    margin-top: 8px;\n}\r\n\r\n/*----------------------------*/\r\n/* RWD */\r\n/*----------------------------*/\r\n\r\n/* Smaller viewports — more tablets, old monitors */\n@media only screen and (max-width: 860px) {\r\n    /* #main-header,\r\n    .navbar,\r\n    .container,\r\n    .container-footer,\r\n    .thank,\r\n    .oldnew,\r\n    .copyright {\r\n        width: 715px;\r\n        margin-left: -357.5px;\r\n    }\r\n    #main-container-menu {\r\n        display: none;\r\n    } */\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        margin-bottom: 11px;\n}\n}\r\n/* Even smaller viewports — more tablets, etc. */\n@media only screen and (max-width: 740px) {\r\n    \r\n    /* #wrapper-bouton-icon,\r\n    #main_tip_search, */\n#text-search[data-v-f8dfcc6e] {\r\n        display: none;\n}\n.work figure[data-v-f8dfcc6e] {\r\n        /* width: calc(100% - 30px); */\r\n        margin-left: 15px;\n}\n.wrapper-text-description[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        float: left;\r\n        position: relative;\r\n        right: 0;\r\n        margin-left: 15px;\r\n        margin-top: 25px;\n}\n.image-morefrom-1 img[data-v-f8dfcc6e],\r\n    .image-morefrom-2 img[data-v-f8dfcc6e],\r\n    .image-morefrom-3 img[data-v-f8dfcc6e],\r\n    .image-morefrom-4 img[data-v-f8dfcc6e] {\r\n        width: 90%;\r\n        height: auto;\r\n        margin-left: 5%;\r\n        padding-bottom: 5%;\r\n        padding-top: 5%;\n}\n.post-send[data-v-f8dfcc6e],\r\n    .post-reply[data-v-f8dfcc6e],\r\n    .post-reply-2[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\n}\r\n/* Mobile phones (Landscape) and Tablets (Portrait) */\n@media only screen and (max-width: 610px) {\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        float: left;\r\n        margin-bottom: 17px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n        height: 92%;\r\n        width: 92%;\r\n        margin-left: 4%;\n}\n.work figure img[data-v-f8dfcc6e] {\r\n        height: 92%;\r\n        width: 92%;\r\n        margin-left: 4%;\r\n        margin-top: 4%;\n}\n}\r\n/* Mobile phones (Landscape) and Tablets (Portrait) */\n@media only screen and (max-width: 480px) {\n.title-item[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\n.title-icon[data-v-f8dfcc6e] {\r\n        margin-right: 10px;\n}\n.title-text[data-v-f8dfcc6e] {\r\n        font-size: 22px;\r\n        width: 100%;\r\n        margin-top: 8px;\n}\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        float: left;\r\n        margin-bottom: 15px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n        height: 90%;\r\n        width: 90%;\r\n        margin-left: 5%;\n}\n.work figure img[data-v-f8dfcc6e] {\r\n        height: 90%;\r\n        width: 90%;\r\n        margin-left: 5%;\r\n        margin-top: 5%;\n}\n.name-reply-post[data-v-f8dfcc6e],\r\n    .name-reply-post-2[data-v-f8dfcc6e] {\r\n        width: calc(100% - 75px);\r\n        padding-left: 10px;\n}\n.text-reply-post[data-v-f8dfcc6e],\r\n    .text-reply-post-2[data-v-f8dfcc6e] {\r\n        margin-left: 15px;\r\n        width: calc(100% - 30px);\r\n        padding-top: 0;\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n        padding-bottom: 25px;\r\n        margin-top: 20px;\n}\n.post-reply-2[data-v-f8dfcc6e] {\r\n        margin-top: 25px;\n}\n#main-post-send[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\ntextarea[data-v-f8dfcc6e] {\r\n        width: calc(100% + 15px);\n}\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n\r\n/*----------------------------*/\r\n/* MAIN DIV WITH IMAGE */\r\n/*----------------------------*/\n#main-container-image[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    height: auto;\r\n    background-color: #F4F4F4;\r\n    margin-top: 25px;\r\n    opacity: 0;\n}\n.work figure-single[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 60%;\r\n    margin-left: 7.5%;\r\n    height: auto;\r\n    padding: 0 !important;\r\n    transition: all 0.3s ease-in-out;\r\n    -webkit-transition: all 0.3s ease-in-out;\r\n    -moz-transition: all 0.3s ease-in-out;\r\n    -o-transition: all 0.3s ease-in-out;\r\n    -ms-transition: all 0.3s ease-in-out;\r\n    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);\r\n    background-color: #FFF;\n}\n.work figure-single img[data-v-f8dfcc6e] {\r\n    height: 95%;\r\n    width: 95%;\r\n    margin-left: 2.5%;\r\n    margin-top: 2.5%;\n}\n.white[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 52.5%;\n}\n.white img[data-v-f8dfcc6e] {\r\n    width: 100%;\n}\n.part-info-image-single[data-v-f8dfcc6e] {\r\n    float: left;\r\n    margin-bottom: 17.5px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n    height: 20%;\r\n    width: 20%;\n}\n.wrapper-text-description[data-v-f8dfcc6e] {\r\n    position: absolute;\r\n    width: 35%;\r\n    right: 5.5%;\r\n    height: auto;\r\n    margin-top: 85px;\n}\n.wrapper-view[data-v-f8dfcc6e],\r\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weight[data-v-f8dfcc6e],\r\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    border-bottom: solid #E0E0E0 1px;\n}\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weight[data-v-f8dfcc6e],\r\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e] {\r\n    border-top: solid #FFF 1px;\n}\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    border-top: solid #FFF 1px;\n}\n.wrapper-view[data-v-f8dfcc6e],\r\n.wrapper-file[data-v-f8dfcc6e],\r\n.wrapper-weigh[data-v-f8dfcc6e],\r\n.wrapper-download[data-v-f8dfcc6e],\r\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    height: 40px;\n}\n.wrapper-desc[data-v-f8dfcc6e],\r\n.wrapper-morefrom[data-v-f8dfcc6e] {\r\n    height: auto;\n}\n.icon-view[data-v-f8dfcc6e],\r\n.icon-file[data-v-f8dfcc6e],\r\n.icon-weight[data-v-f8dfcc6e],\r\n.icon-desc[data-v-f8dfcc6e],\r\n.icon-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    left: 0;\r\n    margin-right: 25px;\n}\n.icon-view[data-v-f8dfcc6e] {\r\n    margin-top: 10px;\n}\n.icon-file[data-v-f8dfcc6e] {\r\n    margin-top: 9px;\r\n    margin-left: 2px;\n}\n.icon-weight[data-v-f8dfcc6e] {\r\n    margin-top: 8px;\r\n    margin-left: 2px;\n}\n.icon-desc[data-v-f8dfcc6e] {\r\n    margin-top: 7px;\n}\n.icon-download[data-v-f8dfcc6e] {\r\n    margin-top: 6px;\r\n    margin-left: 3px;\n}\n.icon-view img[data-v-f8dfcc6e],\r\n.icon-file img[data-v-f8dfcc6e],\r\n.icon-weight img[data-v-f8dfcc6e],\r\n.icon-desc img[data-v-f8dfcc6e],\r\n.icon-download img[data-v-f8dfcc6e] {\r\n    height: 100%;\r\n    width: 100%;\n}\n.text-view[data-v-f8dfcc6e],\r\n.text-file[data-v-f8dfcc6e],\r\n.text-weight[data-v-f8dfcc6e],\r\n.text-desc[data-v-f8dfcc6e],\r\n.text-download[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    font-family: Helvetica, sans-serif;\r\n    font-size: 15px;\r\n    font-weight: 400;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    color: #A1A1A1;\n}\n.text-view[data-v-f8dfcc6e],\r\n.text-file[data-v-f8dfcc6e],\r\n.text-weight[data-v-f8dfcc6e],\r\n.text-download[data-v-f8dfcc6e] {\r\n    height: 40px;\r\n    line-height: 40px;\n}\n.text-desc[data-v-f8dfcc6e] {\r\n    width: calc(100% - 49px);\r\n    line-height: 130%;\r\n    height: auto;\r\n    margin-bottom: 25px;\r\n    margin-top: 10px;\n}\n.text-download a[data-v-f8dfcc6e] {\r\n    color: #A1A1A1;\r\n    transition: all 0.2s ease-in-out;\r\n    -webkit-transition: all 0.2s ease-in-out;\r\n    -moz-transition: all 0.2s ease-in-out;\r\n    -o-transition: all 0.2s ease-in-out;\n}\n.text-download a[data-v-f8dfcc6e]:hover {\r\n    color: #666;\n}\n.text-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    width: 100%;\r\n    margin-left: 0;\r\n    line-height: 130%;\r\n    height: auto;\r\n    margin-bottom: 0;\r\n    margin-top: 20px;\n}\n.image-morefrom[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 100%;\r\n    margin-top: 20px;\r\n    height: auto;\r\n    margin-bottom: 35px;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-2[data-v-f8dfcc6e],\r\n.image-morefrom-3[data-v-f8dfcc6e],\r\n.image-morefrom-4[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 47.5%;\r\n    height: auto;\r\n    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);\r\n    background-color: #FFF;\r\n    transition: all 0.2s ease-in-out;\r\n    -webkit-transition: all 0.2s ease-in-out;\r\n    -moz-transition: all 0.2s ease-in-out;\r\n    -o-transition: all 0.2s ease-in-out;\r\n    cursor: pointer;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-3[data-v-f8dfcc6e] {\r\n    margin-right: 5%;\n}\n.image-morefrom-1[data-v-f8dfcc6e],\r\n.image-morefrom-2[data-v-f8dfcc6e] {\r\n    margin-bottom: 12.5px;\n}\n.image-morefrom-1 img[data-v-f8dfcc6e],\r\n.image-morefrom-2 img[data-v-f8dfcc6e],\r\n.image-morefrom-3 img[data-v-f8dfcc6e],\r\n.image-morefrom-4 img[data-v-f8dfcc6e] {\r\n    width: 85%;\r\n    height: auto;\r\n    margin-left: 7.5%;\r\n    padding-bottom: 7.5%;\r\n    padding-top: 7.5%;\n}\n.image-morefrom-1[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-2[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-3[data-v-f8dfcc6e]:hover,\r\n.image-morefrom-4[data-v-f8dfcc6e]:hover {\r\n    opacity: 0.5;\n}\n.post-reply[data-v-f8dfcc6e],\r\n.post-reply-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 53%;\r\n    margin-left: 4%;\r\n    height: auto;\n}\n.post-reply[data-v-f8dfcc6e] {\r\n    margin-top: 50px;\n}\n.image-reply-post[data-v-f8dfcc6e],\r\n.image-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 65px;\r\n    height: 65px;\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat;\r\n    top: 0;\n}\n.image-reply-post[data-v-f8dfcc6e] {\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat;\n}\n.image-reply-post-2[data-v-f8dfcc6e] {\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") no-repeat;\n}\n.name-reply-post[data-v-f8dfcc6e],\r\n.name-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: calc(100% - 95px);\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 65px;\r\n    height: 65px;\r\n    padding-left: 30px;\n}\n.text-reply-post[data-v-f8dfcc6e],\r\n.text-reply-post-2[data-v-f8dfcc6e] {\r\n    float: left;\r\n    text-align: left;\r\n    height: auto;\r\n    line-height: 140%;\r\n    margin-left: 95px;\r\n    width: calc(90% - 95px);\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    color: #999;\r\n    margin-top: -10px;\r\n    border-bottom: solid #E9E9E9 1px;\r\n    padding: 20px;\r\n    margin-top: -20px;\n}\n.post-send[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 60%;\r\n    margin-left: 7.5%;\r\n    height: auto;\r\n    margin-bottom: 25px;\n}\n#main-post-send[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: calc(90% - 160px);\r\n    margin-left: 95px;\r\n    height: auto;\r\n    margin-top: 0px;\n}\n#title-post-send[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 65px;\r\n    height: 65px;\r\n    position: relative;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    color: #999;\r\n    width: 320px;\r\n    height: 150px;\r\n    background: #FFF;\r\n    outline: none;\r\n    border: solid 1px #DDDDDD;\r\n    border-radius: 4px;\r\n    padding-left: 10px;\r\n    padding-top: 10px;\r\n    float: left;\r\n    margin-left: -15px;\r\n    margin-top: -25px;\n}\ninput[type=submit][data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    color: #FFF;\r\n    cursor: pointer;\r\n    width: 150px;\r\n    height: 40px;\r\n    padding: 5px 10px;\r\n    border-radius: 4px;\r\n    transition: all 0.5s ease-in-out;\r\n    -webkit-transition: all 0.5s ease-in-out;\r\n    /** Chrome & Safari **/\r\n    -moz-transition: all 0.5s ease-in-out;\r\n    /** Firefox **/\r\n    -o-transition: all 0.5s ease-in-out;\r\n    /** Opera **/\r\n    background-color: #74BDEC;\r\n    float: left;\r\n    border: none;\n}\nfieldset[data-v-f8dfcc6e] {\r\n    border: none;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    resize: vertical;\r\n    max-height: 100px;\r\n    min-height: 100px;\n}\ntextarea[data-v-f8dfcc6e] {\r\n    color: #999;\n}\ntextarea[data-v-f8dfcc6e]:-moz-placeholder {\r\n    color: #999;\n}\ntextarea[data-v-f8dfcc6e]::-webkit-input-placeholder {\r\n    color: #999;\n}\ntextarea.placeholder[data-v-f8dfcc6e] {\r\n    color: #999;\n}\n.title-item[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 92.5%;\r\n    margin-left: 7.5%;\r\n    margin-top: 15px;\r\n    height: 68px;\r\n    margin-bottom: 10px;\n}\n.title-icon[data-v-f8dfcc6e] {\r\n    float: left;\r\n    width: 68px;\r\n    height: 68px;\r\n    margin-right: 20px;\n}\n.title-text[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 22px;\r\n    font-weight: 600;\r\n    color: #686868;\r\n    line-height: 125%;\r\n    height: auto;\r\n    width: calc(100% - 88px);\r\n    margin-top: 8px;\n}\n.title-text-2[data-v-f8dfcc6e] {\r\n    font-family: Helvetica, sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    font-size: 15px;\r\n    font-weight: 400;\r\n    color: #A1A1A1;\r\n    line-height: 125%;\r\n    height: auto;\r\n    width: calc(100% - 88px);\r\n    margin-top: 8px;\n}\r\n\r\n/*----------------------------*/\r\n/* RWD */\r\n/*----------------------------*/\r\n\r\n/* Smaller viewports — more tablets, old monitors */\n@media only screen and (max-width: 860px) {\r\n    /* #main-header,\r\n    .navbar,\r\n    .container,\r\n    .container-footer,\r\n    .thank,\r\n    .oldnew,\r\n    .copyright {\r\n        width: 715px;\r\n        margin-left: -357.5px;\r\n    }\r\n    #main-container-menu {\r\n        display: none;\r\n    } */\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        margin-bottom: 11px;\n}\n}\r\n/* Even smaller viewports — more tablets, etc. */\n@media only screen and (max-width: 740px) {\r\n    \r\n    /* #wrapper-bouton-icon,\r\n    #main_tip_search, */\n#text-search[data-v-f8dfcc6e] {\r\n        display: none;\n}\n.work figure[data-v-f8dfcc6e] {\r\n        /* width: calc(100% - 30px); */\r\n        margin-left: 15px;\n}\n.wrapper-text-description[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        float: left;\r\n        position: relative;\r\n        right: 0;\r\n        margin-left: 15px;\r\n        margin-top: 25px;\n}\n.image-morefrom-1 img[data-v-f8dfcc6e],\r\n    .image-morefrom-2 img[data-v-f8dfcc6e],\r\n    .image-morefrom-3 img[data-v-f8dfcc6e],\r\n    .image-morefrom-4 img[data-v-f8dfcc6e] {\r\n        width: 90%;\r\n        height: auto;\r\n        margin-left: 5%;\r\n        padding-bottom: 5%;\r\n        padding-top: 5%;\n}\n.post-send[data-v-f8dfcc6e],\r\n    .post-reply[data-v-f8dfcc6e],\r\n    .post-reply-2[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\n}\r\n/* Mobile phones (Landscape) and Tablets (Portrait) */\n@media only screen and (max-width: 610px) {\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        float: left;\r\n        margin-bottom: 17px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n        height: 92%;\r\n        width: 92%;\r\n        margin-left: 4%;\n}\n.work figure img[data-v-f8dfcc6e] {\r\n        height: 92%;\r\n        width: 92%;\r\n        margin-left: 4%;\r\n        margin-top: 4%;\n}\n}\r\n/* Mobile phones (Landscape) and Tablets (Portrait) */\n@media only screen and (max-width: 480px) {\n.title-item[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\n.title-icon[data-v-f8dfcc6e] {\r\n        margin-right: 10px;\n}\n.title-text[data-v-f8dfcc6e] {\r\n        font-size: 22px;\r\n        width: 100%;\r\n        margin-top: 8px;\n}\n.part-info-image-single[data-v-f8dfcc6e] {\r\n        float: left;\r\n        margin-bottom: 15px;\n}\n#wrapper-part-info .part-info-image img[data-v-f8dfcc6e] {\r\n        height: 90%;\r\n        width: 90%;\r\n        margin-left: 5%;\n}\n.work figure img[data-v-f8dfcc6e] {\r\n        height: 90%;\r\n        width: 90%;\r\n        margin-left: 5%;\r\n        margin-top: 5%;\n}\n.name-reply-post[data-v-f8dfcc6e],\r\n    .name-reply-post-2[data-v-f8dfcc6e] {\r\n        width: calc(100% - 75px);\r\n        padding-left: 10px;\n}\n.text-reply-post[data-v-f8dfcc6e],\r\n    .text-reply-post-2[data-v-f8dfcc6e] {\r\n        margin-left: 15px;\r\n        width: calc(100% - 30px);\r\n        padding-top: 0;\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n        padding-bottom: 25px;\r\n        margin-top: 20px;\n}\n.post-reply-2[data-v-f8dfcc6e] {\r\n        margin-top: 25px;\n}\n#main-post-send[data-v-f8dfcc6e] {\r\n        width: calc(100% - 30px);\r\n        margin-left: 15px;\n}\ntextarea[data-v-f8dfcc6e] {\r\n        width: calc(100% + 15px);\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61987,7 +62016,26 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "post-reply" }, [
+                    _c("div", { attrs: { id: "title-post-send" } }, [
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c(
+                        "h2",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.comments(_vm.resource).length > 0,
+                              expression: "comments(resource).length > 0"
+                            }
+                          ]
+                        },
+                        [_vm._v("Your comments")]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
                   _vm._l(_vm.comments(_vm.resource), function(comment, index) {
                     return _c(
@@ -62012,7 +62060,68 @@ var render = function() {
                     )
                   }),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm.$store.state.connectedUser
+                    ? _c("div", { staticClass: "post-send" }, [
+                        _c("div", { attrs: { id: "main-post-send" } }, [
+                          _c("div", { attrs: { id: "title-post-send" } }, [
+                            _vm._v("Add your comment")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              attrs: { id: "contact" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.addComment($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("fieldset", [
+                                _c("p", [
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.formData.comment,
+                                        expression: "formData.comment"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "message",
+                                      name: "message",
+                                      maxlength: "500",
+                                      placeholder: "Votre Message",
+                                      tabindex: "5",
+                                      cols: "30",
+                                      rows: "4"
+                                    },
+                                    domProps: { value: _vm.formData.comment },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.formData,
+                                          "comment",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(3)
+                            ]
+                          )
+                        ])
+                      ])
+                    : _vm._e()
                 ],
                 2
               )
@@ -62083,58 +62192,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-reply" }, [
-      _c("div", { attrs: { id: "title-post-send" } }, [
-        _c("hr"),
-        _vm._v(" "),
-        _c("h2", [_vm._v("Your comments")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-send" }, [
-      _c("div", { attrs: { id: "main-post-send" } }, [
-        _c("div", { attrs: { id: "title-post-send" } }, [
-          _vm._v("  Add your comment")
-        ]),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: {
-              id: "contact",
-              method: "post",
-              action: "/onclickprod/formsubmit_op.asp"
-            }
-          },
-          [
-            _c("fieldset", [
-              _c("p", [
-                _c("textarea", {
-                  attrs: {
-                    id: "message",
-                    name: "message",
-                    maxlength: "500",
-                    placeholder: "Votre Message",
-                    tabindex: "5",
-                    cols: "30",
-                    rows: "4"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticStyle: { "text-align": "center" } }, [
-              _c("input", {
-                attrs: { type: "submit", name: "envoi", value: "Envoyer" }
-              })
-            ])
-          ]
-        )
-      ])
+    return _c("div", { staticStyle: { "text-align": "center" } }, [
+      _c("input", {
+        attrs: { type: "submit", name: "envoi", value: "Envoyer" }
+      })
     ])
   }
 ]
