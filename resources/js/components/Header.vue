@@ -16,9 +16,7 @@
                 <button class="connection-button"><router-link to="/register">Sign in</router-link></button>
             </template>
             <div id="main_tip_search">
-            <form>
-                <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
-            </form>
+                <Search />
             </div>
             
         </div>
@@ -27,8 +25,12 @@
 </template>
 
 <script>
+import Search from './Search'
     export default {
         name: "Header",
+        components: {
+            Search
+        },
         methods: {
             logout() {
                 axios.post('/api/logout', {user: this.$store.state.connectedUser})
