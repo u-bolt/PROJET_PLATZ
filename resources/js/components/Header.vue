@@ -31,11 +31,11 @@
         name: "Header",
         methods: {
             logout() {
+                sessionStorage.clear()
                 axios.post('/api/logout', {user: this.$store.state.connectedUser})
                     .then(response => {
                         this.$store.dispatch('logoutUser', response.data)
-                    })
-                
+                })
             }
         }
     }

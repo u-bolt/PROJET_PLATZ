@@ -2090,6 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       var _this = this;
 
+      sessionStorage.clear();
       axios.post('/api/logout', {
         user: this.$store.state.connectedUser
       }).then(function (response) {
@@ -2519,11 +2520,23 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/sanctum/csrf-cookie').then(function (response) {
         axios.post('/api/login', _this.formData).then(function (response) {
-          _this.$store.dispatch('loginUser', response.data);
+          if (response.data.status_code == 200) {
+            _this.$store.dispatch('loginUser', response.data.user);
 
-          _this.$router.push({
-            name: "homepage"
-          });
+            var temp = JSON.stringify(response.data.user);
+            sessionStorage.setItem('user', temp);
+
+            _this.$router.push({
+              name: "homepage"
+            });
+          } else if (response.data.status_code === 400) {
+            _this.$notify({
+              title: 'Oups...',
+              text: 'There is a problem with your email or your password',
+              type: 'error',
+              speed: 600
+            });
+          }
         });
       });
     }
@@ -2639,6 +2652,12 @@ var app = new Vue({
   router: _routing_router__WEBPACK_IMPORTED_MODULE_0__.default,
   store: _store_store__WEBPACK_IMPORTED_MODULE_1__.default,
   created: function created() {
+    if (sessionStorage.getItem('user')) {
+      var temp = sessionStorage.getItem('user');
+      var temp_json = JSON.parse(temp);
+      this.$store.dispatch('loginUser', temp_json);
+    }
+
     this.$store.dispatch('setCategories');
     this.$store.dispatch('setResources');
     this.$store.dispatch('setComments');
@@ -2911,12 +2930,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var mutations = {
   SET_RESOURCES: function SET_RESOURCES(state, payload) {
     // Hydratation des ressources
@@ -2935,7 +2948,7 @@ var mutations = {
     state.users = payload;
   },
   LOGIN_USER: function LOGIN_USER(state, payload) {
-    state.connectedUser = _objectSpread({}, payload.user);
+    state.connectedUser = payload;
   },
   LOGOUT_USER: function LOGOUT_USER(state, payload) {
     state.connectedUser = null;
@@ -7587,7 +7600,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container-login {\n    width: 100%;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.login-form {\n    display: flex;\n    flex-wrap: wrap;\n}\ninput {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 170px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-right: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\n#submit {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #FFF;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    border-radius: 4px;\n    background-color: #74BDEC;\n    border: none;\n}\n#submit:hover {\n    background-color: #5dafe6;\n}\n#title-login {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n    font-size: 100px\n}\n.not-login {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n    cursor: pointer;\n    border-radius: 4px;\n    border: none;\n}\n.not-login:hover {\n    color: #5dafe6;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container-login {\n    width: 100%;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.login-form {\n    display: flex;\n    flex-wrap: wrap;\n}\ninput {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 170px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-right: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\n#submit {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #FFF;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    border-radius: 4px;\n    background-color: #74BDEC;\n    border: none;\n}\n#submit:hover {\n    background-color: #5dafe6;\n}\n#title-login {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n    font-size: 100px\n}\n#title-login a {\n    color: #2E2D30;\n}\n.not-login {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n    cursor: pointer;\n    border-radius: 4px;\n    border: none;\n}\n.not-login:hover {\n    color: #5dafe6;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7611,7 +7624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container-login {\n    width: 100%;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.register-form {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n}\ninput {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 250px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\n.button-container {\n    display: flex;\n}\n.submit-form {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #FFF;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    border-radius: 4px;\n    background-color: #74BDEC;\n    border: none;\n}\n.submit-form:hover {\n    background-color: #5dafe6;\n}\n.already-login {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    background: none;\n    border-radius: 4px;\n    border: none;\n}\n.already-login a {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n}\n.already a:hover {\n    color: #5dafe6;\n}\n#title-register {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n    font-size: 100px\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container-login {\n    width: 100%;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.register-form {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n}\ninput {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 250px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\n.button-container {\n    display: flex;\n}\n.submit-form {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #FFF;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    border-radius: 4px;\n    background-color: #74BDEC;\n    border: none;\n}\n.submit-form:hover {\n    background-color: #5dafe6;\n}\n.already-login {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n    cursor: pointer;\n    width: 150px;\n    height: 40px;\n    padding: 5px 10px;\n    background: none;\n    border-radius: 4px;\n    border: none;\n}\n.already-login a {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #74BDEC;\n}\n.already a:hover {\n    color: #5dafe6;\n}\n#title-register {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n    font-size: 100px\n}\n#title-register a {\n    color: #2E2D30;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62313,7 +62326,12 @@ var render = function() {
     "div",
     { staticClass: "container-login" },
     [
-      _c("h2", { attrs: { id: "title-login" } }, [_vm._v("Platz")]),
+      _c(
+        "h2",
+        { attrs: { id: "title-login" } },
+        [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Platz")])],
+        1
+      ),
       _vm._v(" "),
       _c(
         "form",
@@ -62417,7 +62435,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-login" }, [
-    _c("h2", { attrs: { id: "title-register" } }, [_vm._v("Platz")]),
+    _c(
+      "h2",
+      { attrs: { id: "title-register" } },
+      [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Platz")])],
+      1
+    ),
     _vm._v(" "),
     _c("h3", [_vm._v("Register")]),
     _vm._v(" "),

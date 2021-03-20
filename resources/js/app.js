@@ -38,6 +38,11 @@ const app = new Vue({
     router,
     store,
     created() {
+        if(sessionStorage.getItem('user')) {
+            let temp = sessionStorage.getItem('user')
+            let temp_json = JSON.parse(temp)
+            this.$store.dispatch('loginUser', temp_json)
+        }
         this.$store.dispatch('setCategories')
         this.$store.dispatch('setResources')
         this.$store.dispatch('setComments')
