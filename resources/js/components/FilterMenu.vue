@@ -10,11 +10,29 @@
 
                 <div id="main-small-logo">
                     <div class="small-logo"></div>
+                </div> 
+
+                <div class="liens-menu" >
+                    <router-link to="/add" v-if="$store.state.connectedUser">
+                        Ajouter un ressource
+                    </router-link>
                 </div>
+
+                <div class="liens-menu">
+                    <router-link :to="`/edit/${resourceId}`" v-if="$store.state.connectedUser && $route.name === 'details'">
+                        Modifier la resource
+                    </router-link>
+                </div>
+
+                <div class="liens-menu">
+                    <a v-if="$store.state.connectedUser && $route.name === 'details'">
+                         <div v-on:click="supprimer()">Supprimer la ressource</div>
+                     </a>
+                </div> 
 
                 <div id="main-premium-ressource">
                     <div class="premium-ressource" >
-                        <a  @click="showMenu"  v-on:click="noFilter()" href="#">Premium resources</a>
+                        <a  @click="showMenu"  v-on:click="noFilter()" href="#">Catégories</a>
                     </div>
                 </div>
 
@@ -34,9 +52,13 @@
 <script>
     export default {
         name: "FilterMenu",
+        props: ['resourceId'],
         data() {
             return {
-                menu: 'menu-cache'
+                menu: 'menu-cache',
+                    params: {
+                    id: ''
+                }
             }
         },
         computed: {
@@ -53,6 +75,29 @@
             },
             noFilter() {
                 return this.$emit('filter', null)
+            },
+            supprimer() {
+                this.params.id = this.resourceId
+                axios.post('/api/delete', this.params)
+                .then(response => {
+                      // Notification si OK
+                      this.$notify({
+                          title: 'Thank you !',
+                          text: 'The resource has been deleted!',
+                          type: 'success',
+                          speed: 600
+                      })
+                  })
+                  .catch(() => {
+                      // Notification si problème durant la transaction
+                      this.$notify({
+                          title: 'Oups...',
+                          text: 'There is a problem during deletion',
+                          type: 'error',
+                          speed: 600
+                      })
+                  })
+                 this.$router.push("/")  
             }
         }
     }
@@ -71,5 +116,23 @@
          /* left: 0; */
         z-index: 10000 !important;
     }
+
+  .liens-menu {
+        text-align:center;
+        font-family: Helvetica, sans-serif;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .liens-menu a {
+        color: #fff;
+    }
+
+    .liens-menu a:hover {
+        color: #74BDEC;
+    }
+
+
+
 
 </style>

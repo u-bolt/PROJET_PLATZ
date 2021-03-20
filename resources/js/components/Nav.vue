@@ -4,15 +4,15 @@
             <div id="wrapper-bouton-icon">
 
                 <router-link to="/add" v-if="$store.state.connectedUser">
-                    <img class="button-add" src="\assets\img\plus.svg" alt="Add resource">
+                    <img class="button-resource button-add" src="\assets\img\plus.svg" alt="Add resource">
                 </router-link>
 
                 <router-link :to="`/edit/${resourceId}`" v-if="$store.state.connectedUser && $route.name === 'details'">
-                    <img class="button-add" src="\assets\img\edit.svg" alt="Edit resource">
+                    <img class="button-resource" src="\assets\img\edit.svg" alt="Edit resource">
                 </router-link>
 
                 <a v-if="$store.state.connectedUser && $route.name === 'details'">
-                    <img v-on:click="supprimer()" class="button-add" src="\assets\img\remove.svg" alt="Delete resource">
+                    <img v-on:click="supprimer()" class="button-resource" src="\assets\img\remove.svg" alt="Delete resource">
                 </a>
 
                 <div id="bouton-ai" v-for="categorie in categories" :key="categorie.id">
@@ -83,7 +83,7 @@
 </script>
 
 <style>
-    .button-add {
+    .button-resource {
         float: left;
         width: 28px;
         height: 28px;
@@ -96,6 +96,10 @@
         -moz-transition: all 0.2s ease-in-out;
         -o-transition: all 0.2s ease-in-out;
         -ms-transition: all 0.2s ease-in-out;
+    }
+
+    .button-add {
+        margin-left: 20px;
     }
 
 </style>

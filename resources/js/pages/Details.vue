@@ -2,7 +2,7 @@
     <div>
       <Header />
       <Nav :resourceId="resourceId" />
-      <FilterMenu />
+      <FilterMenu :resourceId="resourceId"/>
         <!-- PORTFOLIO -->
         <div id="wrapper-container">
             <div class="container object">

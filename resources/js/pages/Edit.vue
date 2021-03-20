@@ -6,8 +6,11 @@
       <form action="#" @submit.prevent="edit" class="edit-form">
           <input v-model="formData.name" type="text" placeholder="name"/>
           <textarea v-model="formData.description" name="" placeholder="description" cols="30" rows="10"></textarea>
-          <!-- <label for="file" class="label-file">-- Choisir une image --</label> -->
-          <!-- <input id="file" class="input-file" type="file"/> -->
+
+          <input type="file" name="image" class="form-control-file" id="image" @change="onFileChange">
+          <img :src="`assets/img/${resource.image}`" v-if="!imagePreview" /> 
+          <img v-bind:src="imagePreview" v-show="showPreview"/>   
+
           <select v-model="formData.categorie" id="options">
               <option :value="resource.categorie_id" selected>{{ categorie(resource).name }}</option>
               <option v-for="categorie in categories" :key="categorie.id"  :value="categorie.id">{{categorie.name}}</option>
@@ -27,9 +30,12 @@ export default {
               id: null,
               name: '',
               description: '',
+              image: '',
               categorie: '',
               user: ''
-            }
+            },
+                imagePreview: null,
+                showPreview: false,
         }
     },
     computed: {
@@ -49,9 +55,36 @@ export default {
         },
     },
     methods: {
+        onFileChange(event){
+            this.formData.image = event.target.files[0];
+        
+              let reader  = new FileReader();
+
+              reader.addEventListener("load", function () {
+                  this.showPreview = true;
+                  this.imagePreview = reader.result;
+              }.bind(this), false);
+
+              if( this.formData.image ){
+                  if ( /\.(jpeg|png|gif)$/i.test( this.formData.image.name ) ) {
+                      reader.readAsDataURL( this.formData.image );
+                  }
+              }
+        },
         edit() {
           this.formData.user = this.$store.state.connectedUser.id
-          axios.post('/api/edit', this.formData)
+
+          let formData = new FormData();
+
+              formData.append("id", this.formData.id);
+              formData.append("image", this.formData.image);
+              formData.append("name", this.formData.name);
+              formData.append("description", this.formData.description);
+              formData.append("categorie", this.formData.categorie);
+              formData.append("user", this.formData.user);
+
+
+          axios.post('/api/edit', formData)
                .then(response => {
                     // Notification si OK
                     this.$notify({
@@ -78,12 +111,18 @@ export default {
       this.formData.description = this.resource.description
       this.formData.categorie = this.resource.categorie_id
       this.formData.id = this.$route.params.id
+      this.formData.image = this.resource.image
     }
   
 }
 </script>
 
-<style>
+<style scoped>
+
+      img {
+        height: 120px;
+        width: 160px;
+      }
 
      .container-edit {
           width: 100%;
