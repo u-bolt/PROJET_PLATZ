@@ -37,7 +37,7 @@ export default {
             clearTimeout(this.timer)
             this.timer = null
             this.searchData = null
-            if(this.value) {
+            if(this.value.trim()) {
                 this.timer = setTimeout(() => {
                     axios.get('api/search', {params: {search: this.value}})
                          .then(response => {
