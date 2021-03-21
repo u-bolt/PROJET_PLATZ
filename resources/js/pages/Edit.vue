@@ -1,6 +1,6 @@
 <template>
   <div class="container-edit">
-      <h2 id="title-edit">Platz</h2>
+      <h2 id="title-edit"><router-link to="/">Platz</router-link></h2>
       <h3 id="title-edit-resource">Modifier une ressource</h3>
 
       <form action="#" @submit.prevent="edit" class="edit-form">
@@ -15,7 +15,15 @@
               <option :value="resource.categorie_id" selected>{{ categorie(resource).name }}</option>
               <option v-for="categorie in categories" :key="categorie.id"  :value="categorie.id">{{categorie.name}}</option>
           </select>
-          <button id="submit">Modifier</button>
+          <button 
+            id="submit" 
+            :class="!formData.name.length 
+                    || !formData.description.length
+                    || !formData.categorie 
+                    ? 'disabled' : '' "
+          >
+            Modifier
+          </button>
       </form>
 
   </div>
@@ -133,12 +141,15 @@ export default {
       }
 
     #title-edit {
-        font-family: 'Pacifico', cursive;
-        color: #2E2D30;
-        margin: 0 0 10px 0;
-        font-size: 75px;
-        padding-top: 25px;
-      }
+      font-family: 'Pacifico', cursive;
+      margin: 0 0 10px 0;
+      font-size: 75px;
+      padding-top: 25px;
+    }
+    
+    #title-edit a {
+      color: #2E2D30;
+    }
 
     #title-edit-resource {
       font-family: Helvetica, sans-serif;
