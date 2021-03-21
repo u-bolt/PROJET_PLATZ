@@ -2370,6 +2370,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Add',
   data: function data() {
@@ -2652,6 +2660,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8019,7 +8035,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nimg[data-v-6bf2afb0] {\n    height: 120px;\n    width: 160px;\n}\n.bouton-img[data-v-6bf2afb0] {\n    padding: 4px 14px 4px 14px;\n    width: auto;\n    margin: 20px 0px;\n}\n.bouton-img[data-v-6bf2afb0]:hover {\n    background:#6868680a;\n}\n.champ-image[data-v-6bf2afb0] {\n  width: 100%;\n}\n.image-affiche[data-v-6bf2afb0] {\n  padding-bottom: 20px;\n}\n.container-add[data-v-6bf2afb0] {\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n#title-add[data-v-6bf2afb0] {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 10px 0;\n    font-size: 75px;\n    padding-top: 25px;\n}\n#title-add-resource[data-v-6bf2afb0] {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n}\n.add-form[data-v-6bf2afb0] {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n    width: 30%;\n}\ninput[data-v-6bf2afb0],\ntextarea[data-v-6bf2afb0],\nbutton[data-v-6bf2afb0],\nselect#options[data-v-6bf2afb0],\n.label-file[data-v-6bf2afb0] {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 100%;\n    height: 40px;\n    border: solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none;\n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align: center;\n    background-color: #FFF;\n}\ntextarea[data-v-6bf2afb0] {\n    height: 80px;\n}\nselect[data-v-6bf2afb0] {\n    width: 100%;\n}\n.label-file[data-v-6bf2afb0] {\n    width: 100%;\n}\n.input-file[data-v-6bf2afb0] {\n    display: none;\n    width: 100%;\n}\n.label-file[data-v-6bf2afb0] {\n    cursor: pointer;\n}\n.label-file[data-v-6bf2afb0]:hover,\n#options[data-v-6bf2afb0]:hover {\n    color: #74BDEC;\n}\n#submit[data-v-6bf2afb0] {\n    margin-bottom: 150px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nimg[data-v-6bf2afb0] {\n    height: 120px;\n    width: 160px;\n}\n.bouton-img[data-v-6bf2afb0] {\n    padding: 4px 14px 4px 14px;\n    width: auto;\n    margin: 20px 0px;\n}\n.bouton-img[data-v-6bf2afb0]:hover {\n    background:#6868680a;\n}\n.champ-image[data-v-6bf2afb0] {\n  width: 100%;\n}\n.image-affiche[data-v-6bf2afb0] {\n  padding-bottom: 20px;\n}\n.container-add[data-v-6bf2afb0] {\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n#title-add[data-v-6bf2afb0] {\n    font-family: 'Pacifico', cursive;\n    margin: 0 0 10px 0;\n    font-size: 75px;\n    padding-top: 25px;\n}\n#title-add a[data-v-6bf2afb0] {\n    color: #2E2D30;\n}\n#title-add-resource[data-v-6bf2afb0] {\n    font-family: Helvetica, sans-serif;\n    font-size: 16px;\n    font-weight: 600;\n    color: #2E2D30;\n    margin: 0 0 50px 0;\n}\n.add-form[data-v-6bf2afb0] {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n    width: 30%;\n}\ninput[data-v-6bf2afb0],\ntextarea[data-v-6bf2afb0],\nbutton[data-v-6bf2afb0],\nselect#options[data-v-6bf2afb0],\n.label-file[data-v-6bf2afb0] {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 100%;\n    height: 40px;\n    border: solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none;\n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align: center;\n    background-color: #FFF;\n}\ntextarea[data-v-6bf2afb0] {\n    height: 80px;\n}\nselect[data-v-6bf2afb0] {\n    width: 100%;\n}\n.label-file[data-v-6bf2afb0] {\n    width: 100%;\n}\n.input-file[data-v-6bf2afb0] {\n    display: none;\n    width: 100%;\n}\n.label-file[data-v-6bf2afb0] {\n    cursor: pointer;\n}\n.label-file[data-v-6bf2afb0]:hover,\n#options[data-v-6bf2afb0]:hover {\n    color: #74BDEC;\n}\n#submit[data-v-6bf2afb0] {\n    margin-bottom: 150px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8076,7 +8092,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nimg[data-v-22950413] {\n    height: 120px;\n    width: 160px;\n}\n.container-edit[data-v-22950413] {\n      width: 100%;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n}\n#title-edit[data-v-22950413] {\n    font-family: 'Pacifico', cursive;\n    color: #2E2D30;\n    margin: 0 0 10px 0;\n    font-size: 75px;\n    padding-top: 25px;\n}\n#title-edit-resource[data-v-22950413] {\n  font-family: Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 600; \n  color: #2E2D30;\n  margin: 0 0 50px 0;\n}\n.edit-form[data-v-22950413] {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n}\ninput[data-v-22950413], textarea[data-v-22950413], select#options[data-v-22950413], .label-file[data-v-22950413] {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 100%;\n    height: 40px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\ntextarea[data-v-22950413] {\n  height: auto;\n}\nselect[data-v-22950413] {\n  width: 100%;\n}\n.label-file[data-v-22950413] {\n  width: 100%;\n}\n.input-file[data-v-22950413] {\n  display:none;\n  width: 100%;\n}\n.label-file[data-v-22950413] {\ncursor: pointer;\n}\n.label-file[data-v-22950413]:hover, #options[data-v-22950413]:hover {\n    color: #74BDEC;\n}\n#submit[data-v-22950413] {\n  margin-bottom: 150px;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nimg[data-v-22950413] {\n    height: 120px;\n    width: 160px;\n}\n.container-edit[data-v-22950413] {\n      width: 100%;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n}\n#title-edit[data-v-22950413] {\n  font-family: 'Pacifico', cursive;\n  margin: 0 0 10px 0;\n  font-size: 75px;\n  padding-top: 25px;\n}\n#title-edit a[data-v-22950413] {\n  color: #2E2D30;\n}\n#title-edit-resource[data-v-22950413] {\n  font-family: Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 600; \n  color: #2E2D30;\n  margin: 0 0 50px 0;\n}\n.edit-form[data-v-22950413] {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n}\ninput[data-v-22950413], textarea[data-v-22950413], select#options[data-v-22950413], .label-file[data-v-22950413] {\n    font: 16px/1.6 Helvetica, sans-serif;\n    color: #686868;\n    padding: 4px 4px 4px 46px;\n    width: 100%;\n    height: 40px;\n    border:solid 1px #FFF;\n    border-radius: 5px;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    box-shadow: none; \n    outline: 0;\n    margin-bottom: 20px;\n    vertical-align:center;\n    background-color:#FFF;\n}\ntextarea[data-v-22950413] {\n  height: auto;\n}\nselect[data-v-22950413] {\n  width: 100%;\n}\n.label-file[data-v-22950413] {\n  width: 100%;\n}\n.input-file[data-v-22950413] {\n  display:none;\n  width: 100%;\n}\n.label-file[data-v-22950413] {\ncursor: pointer;\n}\n.label-file[data-v-22950413]:hover, #options[data-v-22950413]:hover {\n    color: #74BDEC;\n}\n#submit[data-v-22950413] {\n  margin-bottom: 150px;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62876,7 +62892,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-add" }, [
-    _c("h2", { attrs: { id: "title-add" } }, [_vm._v("Platz")]),
+    _c(
+      "h2",
+      { attrs: { id: "title-add" } },
+      [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Platz")])],
+      1
+    ),
     _vm._v(" "),
     _c("h3", { attrs: { id: "title-add-resource" } }, [
       _vm._v("Ajouter une ressource")
@@ -63004,7 +63025,19 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c("button", { attrs: { id: "submit" } }, [_vm._v("Ajouter")])
+        _c(
+          "button",
+          {
+            class:
+              !_vm.formData.name.length ||
+              !_vm.formData.description.length ||
+              !_vm.formData.categorie
+                ? "disabled"
+                : "",
+            attrs: { id: "submit" }
+          },
+          [_vm._v("\n            Ajouter\n        ")]
+        )
       ]
     )
   ])
@@ -63373,7 +63406,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-edit" }, [
-    _c("h2", { attrs: { id: "title-edit" } }, [_vm._v("Platz")]),
+    _c(
+      "h2",
+      { attrs: { id: "title-edit" } },
+      [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Platz")])],
+      1
+    ),
     _vm._v(" "),
     _c("h3", { attrs: { id: "title-edit-resource" } }, [
       _vm._v("Modifier une ressource")
@@ -63512,7 +63550,19 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c("button", { attrs: { id: "submit" } }, [_vm._v("Modifier")])
+        _c(
+          "button",
+          {
+            class:
+              !_vm.formData.name.length ||
+              !_vm.formData.description.length ||
+              !_vm.formData.categorie
+                ? "disabled"
+                : "",
+            attrs: { id: "submit" }
+          },
+          [_vm._v("\n          Modifier\n        ")]
+        )
       ]
     )
   ])
@@ -63736,7 +63786,7 @@ var render = function() {
                 expression: "formData.email"
               }
             ],
-            attrs: { type: "text", placeholder: "Login" },
+            attrs: { type: "text", placeholder: "Email" },
             domProps: { value: _vm.formData.email },
             on: {
               input: function($event) {
