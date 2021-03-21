@@ -13,7 +13,7 @@
                 <button class="connection-button"><router-link to="/login">Login</router-link></button>
             </template>
             <template v-if="!$store.state.connectedUser">
-                <button class="connection-button"><router-link to="/register">Sign in</router-link></button>
+                <button class="connection-button"><router-link to="/register">Register</router-link></button>
             </template>
             <div id="main_tip_search">
                 <Search />

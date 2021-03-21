@@ -32,12 +32,18 @@ export default {
     },
     methods: {
         login() {
-            axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('/api/register', this.formData).then(response => {
-                    this.$store.dispatch('loginUser', response.data)
-                    this.$router.push({name: "homepage"})
-                })
-            });
+            if( /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(this.formData.email)) {
+                axios.get('/sanctum/csrf-cookie').then(response => {
+                    axios.post('/api/register', this.formData).then(response => {
+                        if (response.data.status_code === 200) {
+                            this.$store.dispatch('loginUser', response.data.user)
+                            let temp = JSON.stringify(response.data.user)
+                            sessionStorage.setItem('user', temp)
+                            this.$router.push({name: "homepage"})
+                        }
+                    })
+                });
+            }
         }
     }
 }

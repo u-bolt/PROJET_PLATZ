@@ -3024,15 +3024,22 @@ __webpack_require__.r(__webpack_exports__);
     login: function login() {
       var _this = this;
 
-      axios.get('/sanctum/csrf-cookie').then(function (response) {
-        axios.post('/api/register', _this.formData).then(function (response) {
-          _this.$store.dispatch('loginUser', response.data);
+      if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(this.formData.email)) {
+        axios.get('/sanctum/csrf-cookie').then(function (response) {
+          axios.post('/api/register', _this.formData).then(function (response) {
+            if (response.data.status_code === 200) {
+              _this.$store.dispatch('loginUser', response.data.user);
 
-          _this.$router.push({
-            name: "homepage"
+              var temp = JSON.stringify(response.data.user);
+              sessionStorage.setItem('user', temp);
+
+              _this.$router.push({
+                name: "homepage"
+              });
+            }
           });
         });
-      });
+      }
     }
   }
 });
@@ -3400,7 +3407,9 @@ var mutations = {
     state.users = payload;
   },
   LOGIN_USER: function LOGIN_USER(state, payload) {
+    console.log(payload);
     state.connectedUser = payload;
+    console.log(state.connectedUser);
   },
   LOGOUT_USER: function LOGOUT_USER(state, payload) {
     state.connectedUser = null;
@@ -62630,7 +62639,7 @@ var render = function() {
                   { staticClass: "connection-button" },
                   [
                     _c("router-link", { attrs: { to: "/register" } }, [
-                      _vm._v("Sign in")
+                      _vm._v("Register")
                     ])
                   ],
                   1
