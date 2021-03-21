@@ -31,10 +31,20 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
+        $credentials = request(['email', 'password']);
+
+        if(!Auth::attempt($credentials)) {
+            return response()->json([
+                'status_code' => 500,
+                'message' => 'Unauthorized'
+            ]);
+        }
+
         return response()->json([
             'status_code' => 200,
-            'message' => 'User created succesfully !'
+            'user' => $user
         ]);
+
     }
 
     public function login(Request $request) {
