@@ -2,7 +2,7 @@
   <div class="container-login">
       <h2 id="title-login"><router-link to="/">Platz</router-link></h2>
       <form action="#" @submit.prevent="login" class="login-form">
-          <input type="text" v-model="formData.email" placeholder="Login"/>
+          <input type="text" v-model="formData.email" placeholder="Email"/>
           <input type="password" v-model="formData.password" placeholder="Password"/>
           <button id="submit" :class="!formData.email.length || !formData.password.length?'disabled':''">Sign in</button>
       </form>

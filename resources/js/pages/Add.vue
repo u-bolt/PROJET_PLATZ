@@ -1,6 +1,6 @@
 <template>
     <div class="container-add">
-        <h2 id="title-add">Platz</h2>
+        <h2 id="title-add"><router-link to="/">Platz</router-link></h2>
         <h3 id="title-add-resource">Ajouter une ressource</h3>
 
         <form action="#" @submit.prevent="add" class="add-form">
@@ -18,7 +18,15 @@
                 </option>
             </select>
 
-            <button id="submit">Ajouter</button>
+            <button
+                id="submit"
+                :class="!formData.name.length 
+                        || !formData.description.length
+                        || !formData.categorie 
+                        ? 'disabled' : '' "
+            >
+                Ajouter
+            </button>
         </form>
 
     </div>
@@ -135,10 +143,13 @@
 
     #title-add {
         font-family: 'Pacifico', cursive;
-        color: #2E2D30;
         margin: 0 0 10px 0;
         font-size: 75px;
         padding-top: 25px;
+    }
+
+    #title-add a {
+        color: #2E2D30;
     }
 
     #title-add-resource {
