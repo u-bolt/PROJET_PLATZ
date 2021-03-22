@@ -331,10 +331,11 @@ body,html{
 
 .work figure a img {
     height: 90%;
-		max-height: 182px;
+	max-height: 182px;
+	min-height: 182px;
     width: 90%;
-		margin-left:5%;
-		margin-top:5%;
+	margin-left:5%;
+	margin-top:5%;
 }
 
 .work figure dl {
