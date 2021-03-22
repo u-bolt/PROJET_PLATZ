@@ -19,7 +19,7 @@
 
                     <div class="work">
                         <figure class="white">
-                            <img :src="`assets/img/${resource.image}`" alt="" />
+                            <img :src="`assets/img/${resource.image}`" :alt="resource.name" />
                         </figure>
 
 
@@ -49,7 +49,7 @@
                                 <div class="text-morefrom">More from {{ categorie(resource).name }}</div>
                                 <div class="image-morefrom">
                                    <router-link :key="index" v-for="(resource, index) in moreResources" :to="`/details/${resource.id}`">
-                                       <div :class="`image-morefrom-${index + 1}`"><img :src="`assets/img/${resource.image}`" alt="" width="430" height="330" /></div>
+                                       <div :class="`image-morefrom-${index + 1}`"><img :src="`assets/img/${resource.image}`" :alt="resource.name" width="430" height="330" /></div>
                                    </router-link>
                                 </div>
                             </div>
