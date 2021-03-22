@@ -17,9 +17,7 @@ const mutations = {
         state.users = payload
     },
     LOGIN_USER(state, payload) {
-        console.log(payload)
         state.connectedUser = payload
-        console.log(state.connectedUser);
     },
     LOGOUT_USER(state, payload) {
         state.connectedUser = null

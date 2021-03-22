@@ -2921,10 +2921,6 @@ __webpack_require__.r(__webpack_exports__);
     truncate: function truncate(str, start, end) {
       return str.substring(start, end) + "...";
     }
-  },
-  created: function created() {
-    this.$store.dispatch('setCategories');
-    this.$store.dispatch('setResources');
   }
 });
 
@@ -3423,9 +3419,7 @@ var mutations = {
     state.users = payload;
   },
   LOGIN_USER: function LOGIN_USER(state, payload) {
-    console.log(payload);
     state.connectedUser = payload;
-    console.log(state.connectedUser);
   },
   LOGOUT_USER: function LOGOUT_USER(state, payload) {
     state.connectedUser = null;
@@ -63129,7 +63123,7 @@ var render = function() {
                     _c("img", {
                       attrs: {
                         src: "assets/img/" + _vm.resource.image,
-                        alt: ""
+                        alt: _vm.resource.name
                       }
                     })
                   ]),
@@ -63197,7 +63191,7 @@ var render = function() {
                                   _c("img", {
                                     attrs: {
                                       src: "assets/img/" + resource.image,
-                                      alt: "",
+                                      alt: resource.name,
                                       width: "430",
                                       height: "330"
                                     }

@@ -129,10 +129,6 @@ export default {
         truncate(str, start, end) {
             return str.substring(start, end) + "..."
         }
-    },
-    created() {
-        this.$store.dispatch('setCategories')
-        this.$store.dispatch('setResources')
     }
 }
 </script>
