@@ -27,22 +27,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // API DES RESOURCES
 // CTRL: Resources
-    Route::resource('resources', Resources::class)->except(['show', 'create', 'edit']);
+    Route::get('resources', [Resources::class, 'index']);
 
 // API DES CATEGORIES
 // CTRL: Categories
-    Route::resource('categories', Categories::class)->except(['show', 'create', 'edit']);
+    Route::get('categories', [Categories::class, 'index']);
 
 // API DES NEWSLETETRS
 // CTRL: Newsletters
-    Route::resource('newsletters', Newsletters::class)->only('store');
+    Route::post('newsletters', [Newsletters::class, 'store']);
 // API DES COMMENTS
 // CTRL: Comments
-    Route::resource('comments', Comments::class)->except(['show', 'create', 'edit']);
+    Route::get('comments', [Comments::class, 'index']);
 
 // API DES USERS
 // CTRL: Users
-    Route::resource('users', Users::class)->except(['show', 'create', 'edit']);
+    Route::get('users', [Users::class, 'index']);
 
 // CONNECTION
     Route::post('/login', [AuthController::class, 'login']);
