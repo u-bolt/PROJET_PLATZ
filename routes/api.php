@@ -48,7 +48,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/login', [AuthController::class, 'login']);
 
 // ENREGISTREMENT
-Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/register', [AuthController::class, 'register']);
 
 // RECHERCHE
 // CTRL: Search
@@ -56,14 +56,15 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
+    // ADD
     Route::post('/comments/add', [Comments::class, 'add']);
-        // DECONNECTION
-        Route::post('/logout', [AuthController::class, 'logout']);
-        // ADD
-        Route::post('/add', [Resources::class, 'add']);
-        // EDIT
-        Route::post('/edit', [Resources::class, 'edit']);
-         // DELETE
-         Route::post('/delete', [Resources::class, 'delete']);
-    });
+    // DECONNECTION
+    Route::post('/logout', [AuthController::class, 'logout']);
+    // ADD
+    Route::post('/add', [Resources::class, 'add']);
+    // EDIT
+    Route::post('/edit', [Resources::class, 'edit']);
+    // DELETE
+    Route::post('/delete', [Resources::class, 'delete']);
+});
 
